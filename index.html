@@ -6,50 +6,81 @@
     <title>The Wedding of Piter Andreas Sinaga & Pasangan</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #b8860b; --dark: #2c3e50; --pink: #ffb6c1; --glass: rgba(255, 255, 255, 0.9); }
+        :root { 
+            --gold: #b8860b; 
+            --dark: #2c3e50; 
+            --pink: #ffb6c1; 
+            --theme-bg: rgba(255, 248, 240, 0.9); 
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
         body { 
             font-family: 'Poppins', sans-serif; color: var(--dark); overflow-x: hidden; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://i.postimg.cc/mcDgQ8jv/utma.jpg') fixed center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://i.postimg.cc/CKC7rmM6/1369497e8b83e60fd74b77213a072c41.webp') fixed center/cover;
         }
-        .sakura { position: fixed; top: -10%; background: var(--pink); border-radius: 100% 0 100% 0; opacity: 0.8; z-index: 9999; pointer-events: none; animation: fall linear infinite; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--glass); padding: 10px 20px; border-radius: 30px; display: flex; gap: 15px; z-index: 1000; border: 1px solid var(--gold); backdrop-filter: blur(5px); }
+
+        /* LIGHTBOX MODIFIED FOR ZOOM IN */
+        #lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 10000;
+            display: none; overflow: auto; /* Biar bisa di-scroll kalau foto gede */
+            justify-content: center; align-items: flex-start; /* Mulai dari atas */
+            padding: 40px 10px;
+            cursor: pointer;
+        }
+        #lightbox img { 
+            width: 95%; /* Maksimalkan lebar */
+            max-width: 1000px; /* Batas biar nggak pecah banget di monitor */
+            height: auto; 
+            border: 5px solid white; 
+            border-radius: 10px; 
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+            cursor: default;
+        }
+        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* Navigasi */
+        nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); padding: 10px 25px; border-radius: 30px; display: flex; gap: 15px; z-index: 1000; border: 1px solid var(--gold); backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         nav a { text-decoration: none; color: var(--dark); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+
         section { padding: 80px 20px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
         h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--gold); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin: 15px 0; }
         
-        /* GALLERY STYLE */
-        #gallery { background: var(--glass); backdrop-filter: blur(8px); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-item { cursor: pointer; overflow: hidden; border-radius: 15px; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
-        .gallery-item:hover { transform: scale(1.02); border-color: var(--gold); }
+        /* Gallery Grid */
+        #gallery { background: var(--theme-bg); backdrop-filter: blur(8px); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { cursor: pointer; border-radius: 15px; border: 5px solid white; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; background: #eee; }
+        .gallery-item:hover { transform: translateY(-5px); border-color: var(--gold); }
         .gallery-item img { width: 100%; height: 450px; object-fit: cover; display: block; }
 
-        /* LIGHTBOX BOX (ZOOM EFFECT) */
-        #lightbox {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 10000;
-            display: none; justify-content: center; align-items: center;
-            cursor: zoom-out;
-        }
-        #lightbox img { max-width: 90%; max-height: 80%; border: 5px solid white; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2); animation: zoomIn 0.3s; }
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        /* Wish Section */
+        #wish { background: rgba(255, 240, 230, 0.85); backdrop-filter: blur(5px); }
+        form { max-width: 450px; margin: 0 auto 30px; background: white; padding: 25px; border-radius: 15px; text-align: left; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 8px; font-family: inherit; outline: none; background: #fffaf5; }
+        button { width: 100%; background: var(--gold); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        
+        .wish-container { max-width: 450px; margin: 0 auto; max-height: 350px; overflow-y: auto; text-align: left; padding: 5px; }
+        .wish-card { background: white; padding: 15px; border-radius: 10px; border-left: 5px solid var(--gold); margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
 
-        #wish { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(5px); }
-        form { max-width: 450px; margin: 0 auto 30px; background: white; padding: 25px; border-radius: 15px; text-align: left; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        input, textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; outline: none; }
-        button { width: 100%; background: var(--gold); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; }
-        .wish-container { max-width: 450px; margin: 0 auto; max-height: 350px; overflow-y: auto; text-align: left; }
-        .wish-card { background: white; padding: 15px; border-radius: 10px; border-left: 5px solid var(--gold); margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .bank-card { background: white; padding: 25px; border-radius: 15px; border: 2px dashed var(--gold); max-width: 380px; margin: 20px auto; }
+        /* Gift Section */
+        #gift { background: var(--theme-bg); backdrop-filter: blur(8px); }
+        .bank-card { 
+            background: white; padding: 30px 20px; border-radius: 20px; 
+            border: 1px solid #ddd; max-width: 380px; margin: 20px auto; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .bca-logo { width: 140px; margin-bottom: 15px; }
+
+        .sakura { position: fixed; top: -10%; background: var(--pink); border-radius: 100% 0 100% 0; opacity: 0.8; z-index: 9999; pointer-events: none; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
     <nav><a href="#home">Home</a><a href="#gallery">Gallery</a><a href="#wish">Ucapan</a><a href="#gift">Kado</a></nav>
 
     <div id="lightbox" onclick="this.style.display='none'">
-        <img id="lightbox-img" src="">
+        <img id="lightbox-img" src="" onclick="event.stopPropagation()">
     </div>
 
     <section id="home" style="color:white">
@@ -81,10 +112,11 @@
     </section>
 
     <section id="gift">
+        <h2 style="font-family:'Dancing Script'; font-size:3rem; color:var(--gold); margin-bottom:20px;">Wedding Gift</h2>
         <div class="bank-card">
-            <p><strong>BCA</strong></p>
-            <p style="font-size: 1.6rem; font-weight: 600; color: var(--gold);">3491684397</p>
-            <p>a.n Piter Andreas Sinaga</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1200px-Bank_Central_Asia.svg.png" alt="BCA Logo" class="bca-logo">
+            <p style="font-size: 1.6rem; font-weight: 600; color: #004a99; letter-spacing: 1px;">3491684397</p>
+            <p style="margin-top: 5px; color: #555;">a.n Piter Andreas Sinaga</p>
         </div>
     </section>
 
@@ -101,15 +133,17 @@
             appId: "1:933008597878:web:77d64d919b3bad44ded057",
             databaseURL: "https://wedding-f13d8-default-rtdb.asia-southeast1.firebasedatabase.app"
         };
-
         firebase.initializeApp(config);
         const db = firebase.database();
 
-        // FUNGSI ZOOM HD
+        // FUNGSI ZOOM IN
         function zoomImg(el) {
             const imgSrc = el.querySelector('img').src;
-            document.getElementById('lightbox-img').src = imgSrc;
-            document.getElementById('lightbox').style.display = 'flex';
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = imgSrc;
+            lightbox.style.display = 'flex';
+            lightbox.scrollTop = 0; // Balikin ke posisi atas setiap buka foto
         }
 
         document.getElementById('guestbook').onsubmit = function(e) {
@@ -117,25 +151,15 @@
             const btn = document.getElementById('btnKirim');
             const n = document.getElementById('nama').value;
             const p = document.getElementById('pesan').value;
-
-            btn.disabled = true;
-            btn.innerText = "Lagi ngirim...";
-
-            db.ref('wishes').push({
-                nama: n,
-                pesan: p,
-                timestamp: Date.now()
-            })
+            btn.disabled = true; btn.innerText = "Lagi ngirim...";
+            db.ref('wishes').push({ nama: n, pesan: p, waktu: Date.now() })
             .then(() => {
-                alert("Terkirim, Bree! Mantap!");
+                alert("Terkirim, Bree!");
                 document.getElementById('guestbook').reset();
-                btn.disabled = false;
-                btn.innerText = "Kirim Ucapan";
-            })
-            .catch((err) => {
-                alert("Eror Bree: " + err.message);
-                btn.disabled = false;
-                btn.innerText = "Kirim Ucapan";
+                btn.disabled = false; btn.innerText = "Kirim Ucapan";
+            }).catch((err) => {
+                alert("Eror: " + err.message);
+                btn.disabled = false; btn.innerText = "Kirim Ucapan";
             });
         };
 
