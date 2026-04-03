@@ -19,21 +19,18 @@
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://i.postimg.cc/CKC7rmM6/1369497e8b83e60fd74b77213a072c41.webp') fixed center/cover;
         }
 
-        /* LIGHTBOX MODIFIED FOR ZOOM IN */
+        /* LIGHTBOX UNTUK ZOOM HD */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); z-index: 10000;
-            display: none; overflow: auto; /* Biar bisa di-scroll kalau foto gede */
-            justify-content: center; align-items: flex-start; /* Mulai dari atas */
+            display: none; overflow: auto;
+            justify-content: center; align-items: flex-start;
             padding: 40px 10px;
             cursor: pointer;
         }
         #lightbox img { 
-            width: 95%; /* Maksimalkan lebar */
-            max-width: 1000px; /* Batas biar nggak pecah banget di monitor */
-            height: auto; 
-            border: 5px solid white; 
-            border-radius: 10px; 
+            width: 95%; max-width: 1000px;
+            height: auto; border: 5px solid white; border-radius: 10px; 
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
             animation: zoomIn 0.3s ease;
             cursor: default;
@@ -93,11 +90,12 @@
     <section id="gallery">
         <h2 style="font-family:'Dancing Script'; font-size:3rem; color:var(--gold); margin-bottom:20px;">Gallery</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/y3WmtmVc/1.jpg"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/xcJGP3x4/2.jpg"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/v45WJHd4/3.jpg"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/PpVZWCmj/4.jpg"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/nXfmGbQc/5.jpg"></div>
+            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/5ySsHgT7/a8ad6505bc6aced7c5a7ff59d819f1bc.webp"></div>
+            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/zBSCpBjQ/d6b5d8fc94d8d3e504c6bfc61fdd29b4.webp"></div>
+            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/j2tXrN2L/3297c67a0978b6edc5d1cc85bff3143e.webp"></div>
+            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/kgBy97J8/c95b89d7fe8bcd4111be77300932c2d1.webp"></div>
+            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/gk4MmMvm/dbdec711c398ab692aa1d8340b85edf8.jpg"></div>
+            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/bwB32sC9/82c4311800704a7bd83667ba05948655.jpg"></div>
         </div>
     </section>
 
@@ -136,14 +134,13 @@
         firebase.initializeApp(config);
         const db = firebase.database();
 
-        // FUNGSI ZOOM IN
         function zoomImg(el) {
             const imgSrc = el.querySelector('img').src;
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
             img.src = imgSrc;
             lightbox.style.display = 'flex';
-            lightbox.scrollTop = 0; // Balikin ke posisi atas setiap buka foto
+            lightbox.scrollTop = 0;
         }
 
         document.getElementById('guestbook').onsubmit = function(e) {
@@ -158,7 +155,7 @@
                 document.getElementById('guestbook').reset();
                 btn.disabled = false; btn.innerText = "Kirim Ucapan";
             }).catch((err) => {
-                alert("Eror: " + err.message);
+                alert("Eror Bree: " + err.message);
                 btn.disabled = false; btn.innerText = "Kirim Ucapan";
             });
         };
