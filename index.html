@@ -4,68 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Piter & ???</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #b8860b; --dark: #2c3e50; --cream: #fffaf0; --pink: #ffb6c1; --soft-pink: #fff0f3; }
+        :root { --gold: #b8860b; --dark: #2c3e50; --cream: #fffaf0; --pink: #ffb6c1; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; color: var(--dark); overflow-x: hidden; cursor: crosshair; }
-        nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); padding: 10px 20px; border-radius: 30px; display: flex; gap: 20px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid var(--gold); }
-        nav a { text-decoration: none; color: var(--dark); font-size: 0.85rem; font-weight: 600; }
-        section { padding: 80px 20px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; background-size: cover; background-position: center; background-attachment: fixed; }
-        .hero { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=80'); color: white; }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 5rem; color: var(--gold); margin: 20px 0; }
-        #gallery { background-color: var(--cream); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .gallery-item img { width: 100%; border-radius: 15px; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        #wish { background-color: var(--soft-pink); }
-        form { max-width: 500px; margin: 0 auto 30px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; }
-        input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
-        button { width: 100%; background: var(--gold); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .wish-container { max-height: 400px; overflow-y: auto; margin: 0 auto; max-width: 500px; }
-        .wish-card { background: white; margin-bottom: 15px; padding: 20px; border-radius: 12px; border-left: 6px solid var(--gold); text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
-        #gift { background-color: var(--dark); color: white; }
-        .bank-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 2px dashed var(--gold); max-width: 400px; margin: 20px auto; }
-        .btn-copy { background: var(--gold); color: var(--dark); padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; display: inline-block; margin-top: 15px; }
-        .sakura { position: fixed; background-color: var(--pink); border-radius: 100% 0 100% 0; opacity: 0.7; pointer-events: none; z-index: 999; animation: fall linear infinite; }
-        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+        
+        /* KURSOR LOVE - Pakai Emoji biar pasti muncul */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--cream); 
+            color: var(--dark); 
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" style="font-size:24px"><text y="24">❤️</text></svg>'), auto;
+        }
+
+        section { padding: 60px 20px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover; color: white; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: var(--gold); }
+
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; max-width: 1000px; margin: 20px auto; }
+        .gallery-grid img { width: 100%; border-radius: 10px; border: 4px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        /* WISH SECTION */
+        #wish { background: white; z-index: 10; position: relative; }
+        form { max-width: 450px; margin: 0 auto 30px; background: var(--cream); padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
+        button { width: 100%; background: var(--gold); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+        .wish-container { max-width: 450px; margin: 0 auto; text-align: left; }
+        .wish-card { background: #f9f9f9; padding: 15px; border-radius: 10px; border-left: 5px solid var(--gold); margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        /* SAKURA */
+        .sakura {
+            position: fixed; top: -10%; background: var(--pink); border-radius: 100% 0 100% 0;
+            z-index: 9999; pointer-events: none; animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .bank-card { background: white; padding: 20px; border-radius: 15px; border: 2px dashed var(--gold); max-width: 350px; margin: 20px auto; }
     </style>
 </head>
 <body>
-    <nav><a href="#home">Home</a><a href="#gallery">Gallery</a><a href="#wish">Wish</a><a href="#gift">Gift</a></nav>
+
     <section id="home" class="hero">
         <p>THE WEDDING OF</p>
-        <h1 class="animate__animated animate__zoomIn">Piter & ???</h1>
-        <div style="font-size: 1.5rem;">16 Mei 2026</div>
+        <h1>Piter & Pasangan</h1>
+        <div style="font-size: 1.5rem; margin-top: 10px;">16 Mei 2026</div>
     </section>
+
     <section id="gallery">
-        <h2 style="font-family: 'Dancing Script', cursive; font-size: 3.5rem; margin-bottom: 30px;">Gallery Pre-Wedding</h2>
+        <h2>Gallery Pre-Wedding</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600"></div>
+            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600">
         </div>
     </section>
+
     <section id="wish">
-        <h2 style="font-family: 'Dancing Script', cursive; font-size: 3.5rem; margin-bottom: 30px;">Doa & Ucapan</h2>
+        <h2>Doa & Ucapan</h2>
         <form id="guestbook">
             <input type="text" id="nama" placeholder="Nama Anda" required>
-            <textarea id="pesan" placeholder="Tulis ucapan manis..." rows="3" required></textarea>
+            <textarea id="pesan" placeholder="Tulis ucapan..." rows="3" required></textarea>
             <button type="submit" id="btnKirim">Kirim Ucapan</button>
         </form>
         <div id="display-wish" class="wish-container"></div>
     </section>
+
     <section id="gift">
         <h2>Digital Gift</h2>
         <div class="bank-card">
-            <p>BANK CENTRAL ASIA (BCA)</p>
-            <p id="rekening" style="font-size: 1.5rem; font-weight: 600; margin: 10px 0;">1234567890</p>
+            <p>BCA - 1234567890</p>
             <p>a.n Piter Andreas Sinaga</p>
-            <div class="btn-copy" onclick="copyRek()">Salin Rekening</div>
         </div>
     </section>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <script>
+        // CONFIG FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyCtmSRH_Y1NtGaN1VNLb-1jfQaMum5lOPk",
             authDomain: "wedding-f13d8.firebaseapp.com",
@@ -76,43 +96,42 @@
             databaseURL: "https://wedding-f13d8-default-rtdb.firebaseio.com/"
         };
         firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        const form = document.getElementById('guestbook');
-        form.addEventListener('submit', function(e) {
+        const db = firebase.database();
+
+        // 1. KIRIM WISH
+        document.getElementById('guestbook').addEventListener('submit', function(e) {
             e.preventDefault();
             const n = document.getElementById('nama').value;
             const p = document.getElementById('pesan').value;
-            database.ref('wishes').push({ nama: n, pesan: p, timestamp: Date.now() });
-            form.reset();
+            db.ref('wishes').push({ nama: n, pesan: p }).then(() => {
+                document.getElementById('guestbook').reset();
+            });
         });
-        database.ref('wishes').on('value', (s) => {
-            const data = s.val();
-            const container = document.getElementById('display-wish');
-            container.innerHTML = '';
-            if (data) {
+
+        // 2. TAMPILKAN WISH (REALTIME)
+        db.ref('wishes').on('value', (snap) => {
+            const data = snap.val();
+            const div = document.getElementById('display-wish');
+            div.innerHTML = '';
+            if(data) {
                 Object.values(data).reverse().forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = "wish-card";
-                    card.innerHTML = `<strong>${item.nama}</strong><p>${item.pesan}</p>`;
-                    container.appendChild(card);
+                    div.innerHTML += `<div class="wish-card"><strong>${item.nama}</strong><p>${item.pesan}</p></div>`;
                 });
             }
         });
-        function copyRek() {
-            navigator.clipboard.writeText(document.getElementById('rekening').innerText);
-            alert("Berhasil disalin!");
-        }
-        function createSakura() {
+
+        // 3. ANIMASI SAKURA
+        function buatSakura() {
             const s = document.createElement('div');
-            s.classList.add('sakura');
+            s.className = 'sakura';
             s.style.left = Math.random() * 100 + 'vw';
-            s.style.animationDuration = Math.random() * 3 + 5 + 's';
             s.style.width = Math.random() * 10 + 10 + 'px';
             s.style.height = s.style.width;
+            s.style.animationDuration = Math.random() * 3 + 4 + 's';
             document.body.appendChild(s);
-            setTimeout(() => s.remove(), 8000);
+            setTimeout(() => s.remove(), 6000);
         }
-        setInterval(createSakura, 300);
+        setInterval(buatSakura, 300);
     </script>
 </body>
 </html>
