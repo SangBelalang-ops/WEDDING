@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lilas To ONE OK ROCK - Dynamic Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Oswald:wght@500;700&family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <title>Lilas TO ONE OK ROCK - Jakarta 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Oswald:wght@500;700&family=Chakra+Petch:wght@700&family=Staatliches&display=swap" rel="stylesheet">
     
     <style>
         body {
+            /* GIF One OK Rock Full Color */
             background-image: url('https://i.postimg.cc/Xq5zhmX4/giphy-(3).gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-color: #000;
+            background-blend-mode: normal;
+            /* Font dasar diganti jadi tajam/modern */
             font-family: 'Oswald', sans-serif;
             color: #ffffff;
             margin: 0;
@@ -34,54 +37,56 @@
             width: 100%;
         }
 
-        .container { width: 100%; max-width: 420px; position: relative; z-index: 10; }
+        .container { width: 100%; max-width: 450px; position: relative; z-index: 10; }
 
-        /* --- H1: TWO-TONE 78 FIT --- */
+        /* --- H1: PREMIUM GOTHIC INDUSTRIAL --- */
         h1 {
-            font-family: 'Staatliches', sans-serif;
-            font-size: 6.5rem;
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 3.5rem;
+            color: #ffffff;
             text-align: center;
             margin: 0;
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-
-        .num-78 {
-            color: #ffffff;
             position: relative;
-            display: inline-block;
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            /* Efek Kilat lewat */
             overflow: hidden;
+            text-shadow: 0 0 20px rgba(255,255,255,0.4);
+            transition: all 0.3s ease-out;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        /* Animasi cahaya cuma di angka 78 */
-        .num-78::after {
+        /* Pseudo-element buat cahaya tajam lewat */
+        h1::after {
             content: '';
             position: absolute;
             top: 0;
             left: -150%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
-            transform: skewX(-25deg);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: skewX(-20deg);
             animation: shineThrough 4s infinite;
         }
 
-        .text-fit {
-            color: #ff0000; /* Merah OOR */
-            text-shadow: 2px 2px 0px #000;
+        /* Hover Effect: Putih Mati -> Merah Kila */
+        h1:hover {
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000;
+            border-bottom-color: #ff0000;
         }
 
         @keyframes shineThrough {
             0% { left: -150%; }
-            20% { left: 150%; }
+            25% { left: 150%; }
             100% { left: 150%; }
         }
 
-        /* --- SETLIST SIDEBAR --- */
+        /* --- SETLIST SIDEBAR (BLACK & WHITE) --- */
         .setlist-sidebar {
             flex: 1;
-            padding-top: 15px;
+            padding-top: 10px;
+            text-align: left;
             min-width: 300px;
         }
 
@@ -89,41 +94,66 @@
             font-family: 'Staatliches', sans-serif;
             font-size: 1.5rem;
             color: #ffffff;
-            margin-bottom: 20px;
-            border-left: 5px solid #ff0000;
-            padding-left: 15px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.7);
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
+        .song-list-scroll {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        /* Custom Scrollbar */
+        .song-list-scroll::-webkit-scrollbar { width: 5px; }
+        .song-list-scroll::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 10px; }
+
         .song-item {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Oswald', sans-serif; 
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #bbbbbb;
             margin-bottom: 8px;
             opacity: 0;
-            transform: translateX(20px);
-            transition: 0.5s;
+            transform: translateX(30px);
+            transition: all 0.5s ease-out;
+            line-height: 1.3;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .song-item.show { opacity: 1; transform: translateX(0); }
-        .song-item:hover { color: #ffffff; padding-left: 5px; }
-        .encore-label { color: #ff0000; border-top: 1px solid #333; padding-top: 10px; margin-top: 15px; font-weight: 700; }
+        .encore-label { color: #ff0000; font-size: 1.2rem; margin-top: 15px; font-family: 'Staatliches', sans-serif; letter-spacing: 2px;}
 
-        /* --- CARDS --- */
+        /* --- CARD STYLE (Black Minimalist) --- */
         .card {
-            backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.85); 
             padding: 20px;
+            border-radius: 10px;
             margin-top: 25px;
-            border: 1px solid #222;
+            border: 1px solid #333;
             border-top: 3px solid #ff0000; /* Aksen merah atas */
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+            transition: 0.3s;
         }
 
-        h3 { font-family: 'Staatliches', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 15px; }
+        .card:hover { border-color: #ffffff; }
 
-        /* --- COUNTDOWN: FONT & WARNA BEDA --- */
+        h3 { 
+            font-family: 'Staatliches', sans-serif;
+            font-size: 1.6rem; 
+            color: #ffffff; 
+            margin-top: 0; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 10px rgba(255,255,255,0.7);
+        }
+
+        /* --- TIMER CLEAN VERSION (TWO-TONE) --- */
         .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
         .timer-box { text-align: center; }
         
@@ -147,26 +177,30 @@
         /* --- BUTTONS & INPUT --- */
         button {
             font-family: 'Staatliches', sans-serif;
-            width: 100%; padding: 12px; background: #ff0000; color: #fff;
-            border: none; font-size: 1.5rem; cursor: pointer; transition: 0.2s;
+            width: 100%; padding: 12px; border-radius: 5px; border: none;
+            background: #ff0000; /* Red OOR Button */
+            color: white; font-size: 1.5rem; cursor: pointer; transition: 0.2s;
             letter-spacing: 2px;
         }
-        button:hover { background: #ffffff; color: #000; }
-
+        button:hover { background: #ffffff; color: #000000; box-shadow: 0 5px 25px rgba(255,255,255,0.5); }
+        
         input[type="number"] {
-            width: 80%; background: transparent; border: none; border-bottom: 2px solid #ff0000;
-            color: #ffffff; font-size: 2.8rem; text-align: center; font-family: 'Chakra Petch', sans-serif;
-            margin-bottom: 10px;
+            font-family: 'Chakra Petch', sans-serif;
+            width: 80%; padding: 8px; margin: 10px 0; border-radius: 5px;
+            background: rgba(0,0,0,0.7); color: #ffffff; text-align: center; font-size: 2.2rem; border: 1px solid #333;
         }
-        input[type="number"]:focus { outline: none; border-bottom-color: #fff; }
+        input[type="number"]:focus { border-color: #ffffff; outline: none; }
 
-        .item { display: flex; align-items: center; margin-bottom: 10px; font-size: 1.1rem; text-transform: uppercase; font-weight: 500; }
+        /* --- CHECKLIST --- */
+        .checklist { text-align: left; }
+        .item { font-family: 'Oswald', sans-serif; font-weight: 500; display: flex; align-items: center; margin-bottom: 8px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
         input[type="checkbox"] { width: 18px; height: 18px; margin-right: 15px; accent-color: #ff0000; }
 
         @media (max-width: 850px) {
             .main-wrapper { flex-direction: column; align-items: center; }
-            .setlist-sidebar { width: 100%; border-top: 1px solid #333; padding-top: 30px; }
-            h1 { font-size: 4.5rem; }
+            .setlist-sidebar { padding-top: 40px; text-align: center; width: 100%; }
+            .song-list-scroll { max-height: none; overflow: visible; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -176,27 +210,20 @@
 
     <div class="main-wrapper">
         <div class="container">
-            <h1><span class="num-78">78</span><span class="text-fit">FIT</span></h1>
+            <h1>Lilas TO ONE OK ROCK</h1>
             
             <div class="card">
-                <h3>DETOX TOUR COUNTDOWN</h3>
+                <h3>DETOX TOUR JAKARTA</h3>
                 <div class="timer-grid">
-                    <div class="timer-box"><span id="days">00</span><small>DAYS</small></div>
-                    <div class="timer-box"><span id="hours">00</span><small>HOURS</small></div>
-                    <div class="timer-box"><span id="minutes">00</span><small>MINS</small></div>
-                    <div class="timer-box"><span id="seconds">00</span><small>SECS</small></div>
+                    <div class="timer-box"><span id="days">00</span><small>Days</small></div>
+                    <div class="timer-box"><span id="hours">00</span><small>Hours</small></div>
+                    <div class="timer-box"><span id="minutes">00</span><small>Min</small></div>
+                    <div class="timer-box"><span id="seconds">00</span><small>Sec</small></div>
                 </div>
             </div>
 
-            <div class="card">
-                <h3>TARGET: 78.0 KG</h3>
-                <div id="lastWeight" style="font-size: 4rem; font-family: 'Chakra Petch', sans-serif; color: #ffffff; text-shadow: 0 0 15px rgba(255,255,255,0.3);">--</div>
-                <input type="number" id="currentWeight" step="0.1" placeholder="00.0">
-                <button onclick="updateWeight()">SAVE BATTLE PROGRESS</button>
-            </div>
-
             <div class="card checklist">
-                <h3 style="text-align: center;">DAILY MISSIONS</h3>
+                <h3 style="text-align: center;">DAILY PROTOCOL</h3>
                 <div class="item"><input type="checkbox"> PUSH UP 50X</div>
                 <div class="item"><input type="checkbox"> WEIGHT LIFTING</div>
                 <div class="item"><input type="checkbox"> CARDIO BATTLE</div>
@@ -205,8 +232,8 @@
         </div>
 
         <div class="setlist-sidebar">
-            <div class="setlist-title">DETOX ASIA TOUR 2026 SETLIST</div>
-            <div id="setlist-content"></div>
+            <div class="setlist-title">DETOX TOUR ASIA 2026 SETLIST:</div>
+            <div class="song-list-scroll" id="setlist-content"></div>
         </div>
     </div>
 
@@ -214,13 +241,17 @@
         const song = document.getElementById('themeSong');
         document.body.addEventListener('click', () => { if (song.paused) song.play(); }, { once: true });
 
+        // TRUE SETLIST
         const setlist = [
             "Puppets Can’t Control You (JP)", "The Beginning", "Save Yourself (JP)",
             "NASTY", "Renegades (JP)", "Party’s Over", "Tiny Pieces",
-            "Wherever You Are", "Make It Out Alive", "Instrumental",
+            "Wherever You Are", "Make It Out Alive", "Instrumental Solo",
             "C.U.R.I.O.S.I.T.Y.", "Dystopia (JP)", "Delusion:All",
             "Stand Out Fit In (JP)", "Kimishidai Ressha", "Tropical Therapy",
-            "The Pilot </3", "ENCORE: +Matter", "We Are (JP)",
+            "The Pilot </3", 
+            "--- ENCORE ---",
+            "ENCORE: +Matter", "ENCORE: We Are (JP)",
+            "--- ENCORE 2 ---",
             "ENCORE 2: Kanzen Kankaku Dreamer"
         ];
 
@@ -230,9 +261,9 @@
                 const div = document.createElement('div');
                 div.className = 'song-item';
                 if(track.includes("ENCORE")) div.classList.add('encore-label');
-                div.innerText = track;
+                div.innerText = "> " + track; // Pake '>' ala CLI/industrial
                 container.appendChild(div);
-                setTimeout(() => { div.classList.add('show'); }, 500 + (index * 400)); 
+                setTimeout(() => { div.classList.add('show'); }, 500 + (index * 600)); 
             });
         }
 
@@ -246,14 +277,7 @@
             document.getElementById("seconds").innerText = Math.floor((dist % 60000) / 1000);
         }, 1000);
 
-        function updateWeight() {
-            const w = document.getElementById("currentWeight").value;
-            if(w) { localStorage.setItem("w78", w); document.getElementById("lastWeight").innerText = w + " KG"; }
-        }
-
         window.onload = () => {
-            const saved = localStorage.getItem("w78");
-            if(saved) document.getElementById("lastWeight").innerText = saved + " KG";
             initSetlist();
         };
     </script>
