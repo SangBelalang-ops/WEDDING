@@ -14,8 +14,7 @@
             background-attachment: fixed;
             background-color: rgba(0, 0, 0, 0.7);
             background-blend-mode: darken;
-
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             color: #ffffff;
             margin: 0;
             padding: 20px;
@@ -24,132 +23,67 @@
             align-items: center;
         }
 
-        h1 {
-            font-size: 3rem;
-            color: #ff4757;
-            text-shadow: 2px 2px 10px rgba(255, 71, 87, 0.8);
-            margin-bottom: 5px;
-            letter-spacing: 8px;
-        }
-
-        .quote {
-            font-style: italic;
-            color: #bdc3c7;
-            margin-bottom: 30px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 500px;
-        }
+        .container { width: 100%; max-width: 500px; }
 
         .card {
-            background: rgba(25, 25, 25, 0.85); /* Transparan Gelap */
-            backdrop-filter: blur(8px); /* Efek Blur Kaca */
-            padding: 25px;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
             border-radius: 20px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 71, 87, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: #ff4757;
-            transform: scale(1.02);
-        }
-
-        /* TIMER STYLE */
-        .timer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .timer-box {
-            background: rgba(255, 71, 87, 0.2);
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ff4757;
-        }
-
-        .timer-box span {
-            display: block;
-            font-size: 24px;
-            font-weight: bold;
-            color: #f1c40f;
-        }
-
-        .timer-box small {
-            font-size: 10px;
-            text-transform: uppercase;
-        }
-
-        /* INPUT & BUTTON */
-        input[type="number"] {
-            width: 80%;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border: none;
-            background: #333;
-            color: white;
-            font-size: 1.1rem;
+            border: 1px solid rgba(255, 71, 87, 0.4);
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
+        h1 { font-size: 3.5rem; color: #ff4757; text-shadow: 0 0 15px #ff4757; margin: 10px 0; letter-spacing: 5px; }
+        
+        /* TIMER */
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+        .timer-box { background: rgba(255, 71, 87, 0.2); padding: 10px; border-radius: 10px; border: 1px solid #ff4757; }
+        .timer-box span { display: block; font-size: 22px; font-weight: bold; color: #f1c40f; }
+        .timer-box small { font-size: 9px; text-transform: uppercase; opacity: 0.8; }
+
+        /* BUTTONS */
         button {
-            width: 80%;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            background: #ff4757;
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            width: 100%; padding: 12px; border-radius: 10px; border: none;
+            font-weight: bold; cursor: pointer; transition: 0.3s; margin: 5px 0;
         }
-
-        button:hover {
-            background: #ff6b81;
+        .btn-red { background: #ff4757; color: white; }
+        .btn-green { background: #2ecc71; color: white; font-size: 1.1rem; }
+        .btn-music { background: rgba(241, 196, 15, 0.2); color: #f1c40f; border: 1px solid #f1c40f; width: 48%; }
+        
+        input[type="number"] {
+            width: 80%; padding: 12px; margin: 10px 0; border-radius: 10px;
+            border: none; background: #333; color: white; text-align: center; font-size: 1.2rem;
         }
 
         /* CHECKLIST */
-        .checklist {
-            text-align: left;
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            accent-color: #ff4757;
-        }
-
-        .status-weight {
-            font-size: 1.2rem;
-            color: #2ecc71;
-            font-weight: bold;
-        }
+        .checklist { text-align: left; }
+        .item { display: flex; align-items: center; margin-bottom: 12px; font-size: 1.1rem; }
+        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: #ff4757; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>78 FIT</h1>
-        <p class="quote">"If you don't keep moving, you'll eventually rot."</p>
+        <p style="font-style: italic; opacity: 0.7; margin-bottom: 20px;">"Make it to the top!"</p>
 
         <div class="card">
-            <h3 style="margin-top: 0;">ROAD TO ONE OK ROCK JKT</h3>
+            <h3 style="margin-top:0; color:#f1c40f;">🎧 GYM ANTHEM</h3>
+            <audio id="audioPlayer" loop>
+                <source id="audioSource" src="lagu1.mp3" type="audio/mpeg">
+            </audio>
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn-music" onclick="changeTrack('lagu1.mp3')">TRACK 1</button>
+                <button class="btn-music" onclick="changeTrack('lagu2.mp3')">TRACK 2</button>
+            </div>
+            <button id="playBtn" class="btn-green" style="margin-top:15px;" onclick="togglePlay()">▶ PLAY MUSIC</button>
+        </div>
+
+        <div class="card">
+            <h3 style="margin:0;">ROAD TO ONE OK ROCK JKT</h3>
             <div class="timer-grid">
                 <div class="timer-box"><span id="days">00</span><small>Hari</small></div>
                 <div class="timer-box"><span id="hours">00</span><small>Jam</small></div>
@@ -159,29 +93,52 @@
         </div>
 
         <div class="card">
-            <h3 style="margin-top: 0;">TARGET: 78.0 KG</h3>
-            <p>Berat Terakhir: <span id="lastWeight" class="status-weight">--</span> kg</p>
-            <input type="number" id="currentWeight" step="0.1" placeholder="Input Berat Hari Ini">
-            <button onclick="updateWeight()">SIMPAN PROGRESS</button>
+            <h3 style="margin:0;">TARGET: 78.0 KG</h3>
+            <p>Berat Terakhir: <span id="lastWeight" style="color:#2ecc71; font-weight:bold; font-size:1.4rem;">--</span> kg</p>
+            <input type="number" id="currentWeight" step="0.1" placeholder="Berat hari ini">
+            <button class="btn-red" onclick="updateWeight()">SIMPAN PROGRESS</button>
         </div>
 
         <div class="card checklist">
-            <h3 style="margin-top: 0; text-align: center;">DAILY BATTLE</h3>
+            <h3 style="text-align: center; margin-top:0;">DAILY BATTLE</h3>
             <div class="item"><input type="checkbox"> Push Up 50x</div>
             <div class="item"><input type="checkbox"> Angkat Dumbbell</div>
             <div class="item"><input type="checkbox"> Cardio 15 Menit</div>
-            <div class="item"><input type="checkbox"> No Snacks Today!</div>
+            <div class="item"><input type="checkbox"> No Snacks (Kacang Arab No!)</div>
         </div>
     </div>
 
     <script>
+        // MUSIC LOGIC
+        const audio = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const playBtn = document.getElementById('playBtn');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = "⏸ PAUSE";
+                playBtn.style.background = "#e67e22";
+            } else {
+                audio.pause();
+                playBtn.innerHTML = "▶ PLAY MUSIC";
+                playBtn.style.background = "#2ecc71";
+            }
+        }
+
+        function changeTrack(fileName) {
+            audioSource.src = fileName;
+            audio.load();
+            audio.play();
+            playBtn.innerHTML = "⏸ PAUSE";
+            playBtn.style.background = "#e67e22";
+        }
+
         // COUNTDOWN LOGIC
         const targetDate = new Date("May 16, 2026 19:00:00").getTime();
-
         setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
-
             document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -194,15 +151,13 @@
             if(w) {
                 localStorage.setItem("weight78", w);
                 document.getElementById("lastWeight").innerText = w;
-                alert("Gas terus! Progress tersimpan!");
+                alert("Gas terus, Bos! Progress aman.");
             }
         }
-
         window.onload = function() {
             const saved = localStorage.getItem("weight78");
             if(saved) document.getElementById("lastWeight").innerText = saved;
         }
     </script>
-
 </body>
 </html>
