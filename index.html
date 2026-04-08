@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>78 FIT - Road to OOR Jakarta</title>
+    <title>78 FIT - Detox Tour 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rock+Salt&family=Bebas+Neue&display=swap" rel="stylesheet">
     
     <style>
@@ -20,33 +20,65 @@
             margin: 0;
             padding: 20px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             min-height: 100vh;
             cursor: pointer;
             overflow-x: hidden;
         }
 
-        .container { width: 100%; max-width: 500px; position: relative; z-index: 10; }
-
-        h1 {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 4.5rem;
-            color: #ff4757;
-            text-shadow: 4px 4px 0px #000, 0 0 20px rgba(255, 71, 87, 0.8);
-            margin: 10px 0;
-            letter-spacing: 2px;
-            transform: rotate(-3deg);
-            text-align: center;
+        /* LAYOUT UTAMA: Flexbox buat naruh setlist di samping */
+        .main-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 40px;
+            max-width: 900px;
+            width: 100%;
         }
 
-        .quote {
+        .container { width: 100%; max-width: 450px; position: relative; z-index: 10; }
+
+        /* SETLIST SIDEBAR */
+        .setlist-sidebar {
+            flex: 1;
+            padding-top: 100px; /* Biar sejajar sama bawah judul */
+            text-align: left;
+            min-width: 200px;
+        }
+
+        .setlist-title {
             font-family: 'Rock Salt', cursive;
-            font-size: 0.8rem;
-            color: #bdc3c7;
-            margin-bottom: 35px;
+            font-size: 1.2rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #f1c40f;
+        }
+
+        .song-item {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 8px #ffffff, 0 0 15px #ffffff;
+            margin-bottom: 12px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .song-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* STYLE KARTU & TYPOGRAPHY */
+        h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 4rem;
+            color: #ff4757;
+            text-shadow: 4px 4px 0px #000, 0 0 20px rgba(255, 71, 87, 0.8);
+            margin: 0;
+            transform: rotate(-3deg);
             text-align: center;
-            line-height: 1.5;
         }
 
         .card {
@@ -54,31 +86,26 @@
             background: rgba(20, 20, 20, 0.8);
             padding: 25px;
             border-radius: 25px;
-            margin-bottom: 25px;
+            margin-top: 25px;
             border: 2px solid #333;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.9);
             animation: borderGlow 5s ease-in-out infinite;
         }
 
-        @keyframes borderGlow {
-            0% { border-color: #333; }
-            50% { border-color: #ff4757; }
-            100% { border-color: #333; }
-        }
+        @keyframes borderGlow { 50% { border-color: #ff4757; } }
 
-        h3 { font-size: 1.8rem; letter-spacing: 3px; color: #f1c40f; margin-top: 0; }
-        
+        h3 { font-size: 1.8rem; color: #f1c40f; margin-top: 0; }
         .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .timer-box span { display: block; font-size: 28px; color: #ffffff; text-shadow: 2px 2px 5px #ff4757; }
+        .timer-box span { display: block; font-size: 24px; color: #ffffff; text-shadow: 2px 2px 5px #ff4757; }
 
         button {
             font-family: 'Bebas Neue', sans-serif;
             width: 100%; padding: 15px; border-radius: 12px; border: none;
             background: #ff4757; color: white; font-size: 1.4rem; cursor: pointer; transition: 0.3s;
-            letter-spacing: 2px; margin: 10px 0;
+            letter-spacing: 2px;
         }
-        button:hover { background: #ffffff; color: #ff4757; transform: scale(1.05); }
+        button:hover { background: #ffffff; color: #ff4757; }
         
         input[type="number"] {
             font-family: 'Bebas Neue', sans-serif;
@@ -87,68 +114,52 @@
         }
 
         .checklist { text-align: left; }
-        .item { font-size: 1.5rem; display: flex; align-items: center; margin-bottom: 10px; }
-        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: #ff4757; }
+        .item { display: flex; align-items: center; margin-bottom: 10px; font-size: 1.3rem; }
+        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; accent-color: #ff4757; }
 
-        /* SETLIST ANIMATION */
-        .setlist-container {
-            margin-top: 20px;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Responsive: Kalau layar kecil, setlist pindah ke bawah */
+        @media (max-width: 768px) {
+            .main-wrapper { flex-direction: column; align-items: center; }
+            .setlist-sidebar { padding-top: 20px; text-align: center; }
         }
-
-        #setlist-text {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            text-align: center;
-        }
-
-        .particle { position: fixed; background: #ff4757; width: 1px; height: 50px; opacity: 0.3; animation: fall linear infinite; z-index: 1; pointer-events: none; }
-        @keyframes fall { 0% { transform: translateY(-100px) rotate(15deg); } 100% { transform: translateY(100vh) rotate(15deg); } }
     </style>
 </head>
 <body>
 
     <audio id="themeSong" loop><source src="lagu1.mp3" type="audio/mpeg"></audio>
 
-    <div class="container">
-        <h1>78 FIT</h1>
-        <p class="quote">"If you don't keep moving, you'll eventually rot."</p>
+    <div class="main-wrapper">
+        <div class="container">
+            <h1>78 FIT</h1>
+            <div class="card">
+                <h3>ROAD TO STADIUM</h3>
+                <div class="timer-grid">
+                    <div class="timer-box"><span id="days">00</span><small>Days</small></div>
+                    <div class="timer-box"><span id="hours">00</span><small>Hours</small></div>
+                    <div class="timer-box"><span id="minutes">00</span><small>Min</small></div>
+                    <div class="timer-box"><span id="seconds">00</span><small>Sec</small></div>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>ROAD TO STADIUM</h3>
-            <div class="timer-grid">
-                <div class="timer-box"><span id="days">00</span><small>Days</small></div>
-                <div class="timer-box"><span id="hours">00</span><small>Hours</small></div>
-                <div class="timer-box"><span id="minutes">00</span><small>Min</small></div>
-                <div class="timer-box"><span id="seconds">00</span><small>Sec</small></div>
+            <div class="card">
+                <h3>TARGET: 78.0 KG</h3>
+                <div id="lastWeight" style="color:#2ecc71; font-size:3rem; margin-bottom: 5px;">--</div>
+                <input type="number" id="currentWeight" step="0.1" placeholder="ENTER WEIGHT">
+                <button onclick="updateWeight()">SAVE PROGRESS</button>
+            </div>
+
+            <div class="card checklist">
+                <h3 style="text-align: center;">DAILY MISSION</h3>
+                <div class="item"><input type="checkbox"> PUSH UP 50X</div>
+                <div class="item"><input type="checkbox"> WEIGHT LIFTING</div>
+                <div class="item"><input type="checkbox"> CARDIO BATTLE</div>
+                <div class="item"><input type="checkbox"> NO SNACKS!</div>
             </div>
         </div>
 
-        <div class="card">
-            <h3>TARGET: 78.0 KG</h3>
-            <div id="lastWeight" style="color:#2ecc71; font-size:3.5rem; margin-bottom: 5px;">--</div>
-            <input type="number" id="currentWeight" step="0.1" placeholder="ENTER WEIGHT">
-            <button onclick="updateWeight()">SAVE PROGRESS</button>
-        </div>
-
-        <div class="card checklist">
-            <h3 style="text-align: center;">DAILY MISSION</h3>
-            <div class="item"><input type="checkbox"> PUSH UP 50X</div>
-            <div class="item"><input type="checkbox"> WEIGHT LIFTING</div>
-            <div class="item"><input type="checkbox"> CARDIO BATTLE</div>
-            <div class="item"><input type="checkbox"> NO SNACKS!</div>
-        </div>
-
-        <div class="setlist-container">
-            <div id="setlist-text">DETOX TOUR 2026</div>
+        <div class="setlist-sidebar">
+            <div class="setlist-title">DETOX TOUR ASIA 2026 SETLIST:</div>
+            <div id="setlist-content"></div>
         </div>
     </div>
 
@@ -156,35 +167,28 @@
         const song = document.getElementById('themeSong');
         document.body.addEventListener('click', () => { if (song.paused) song.play(); }, { once: true });
 
-        // SETLIST DATA
         const setlist = [
-            "1. Save Yourself",
-            "2. Taking Off",
-            "3. Wonder",
-            "4. Let Me Let You Go",
-            "5. Renegades",
-            "6. Neon",
-            "7. Vandalize",
-            "8. Broken Heart of Gold",
-            "9. Mighty Long Fall",
-            "10. The Beginning",
-            "11. Wasted Nights",
-            "ENCORE: Stand Out Fit In"
+            "1. Save Yourself", "2. Taking Off", "3. Wonder",
+            "4. Let Me Let You Go", "5. Renegades", "6. Neon",
+            "7. Vandalize", "8. Broken Heart", "9. Mighty Long Fall",
+            "10. The Beginning", "11. Wasted Nights", "ENCORE: Stand Out Fit In"
         ];
 
-        let setIndex = 0;
-        const setElement = document.getElementById('setlist-text');
+        // LOGIKA MUNCULIN SETLIST SATU PER SATU
+        function initSetlist() {
+            const container = document.getElementById('setlist-content');
+            setlist.forEach((track, index) => {
+                const div = document.createElement('div');
+                div.className = 'song-item';
+                div.innerText = track;
+                container.appendChild(div);
 
-        function updateSetlist() {
-            setElement.style.opacity = 0;
-            setTimeout(() => {
-                setElement.innerText = setlist[setIndex];
-                setElement.style.opacity = 1;
-                setIndex = (setIndex + 1) % setlist.length;
-            }, 1500);
+                // Munculin satu-satu dengan delay
+                setTimeout(() => {
+                    div.classList.add('show');
+                }, 1000 + (index * 1500)); // Delay per lagu 1.5 detik
+            });
         }
-
-        setInterval(updateSetlist, 4000);
 
         // TIMER LOGIC
         const targetDate = new Date("May 16, 2026 19:00:00").getTime();
@@ -199,23 +203,13 @@
 
         function updateWeight() {
             const w = document.getElementById("currentWeight").value;
-            if(w) { 
-                localStorage.setItem("w78", w); 
-                document.getElementById("lastWeight").innerText = w + " KG"; 
-            }
+            if(w) { localStorage.setItem("w78", w); document.getElementById("lastWeight").innerText = w + " KG"; }
         }
 
         window.onload = () => {
             const saved = localStorage.getItem("w78");
             if(saved) document.getElementById("lastWeight").innerText = saved + " KG";
-            updateSetlist();
-            for (let i = 0; i < 15; i++) {
-                let p = document.createElement('div'); p.className = 'particle';
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                p.style.animationDelay = Math.random() * 5 + 's';
-                document.body.appendChild(p);
-            }
+            initSetlist();
         };
     </script>
 </body>
