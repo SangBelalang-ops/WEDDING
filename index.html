@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>78 FIT - Road to OOR Jakarta</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #e0e0e0; text-align: center; margin: 0; padding: 20px; }
-        h1 { color: #ff4757; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
-        .container { max-width: 500px; margin: auto; }
-        .card { background: #1e1e1e; padding: 20px; border-radius: 15px; margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #333; }
-        .target-number { font-size: 40px; color: #f1c40f; font-weight: bold; margin: 10px 0; }
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .timer-box { background: #2f3542; padding: 10px; border-radius: 8px; }
-        .timer-box span { display: block; font-size: 20px; font-weight: bold; }
-        .timer-box small { font-size: 10px; color: #a4b0be; }
-        input[type="number"] { padding: 10px; border-radius: 5px; border: none; width: 60%; margin-bottom: 10px; background: #2f3542; color: white; text-align: center; }
-        button { padding: 10px 20px; border-radius: 5px; border: none; background: #ff4757; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #ff6b81; transform: scale(1.05); }
-        .checklist { text-align: left; padding: 0 20px; }
-        .checklist-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 18px; }
-        input[type="checkbox"] { margin-right: 15px; transform: scale(1.5); accent-color: #ff4757; }
-    </style>
+   <style>
+    /* Tambahan biar tampilan "Hidup" */
+    body {
+        background: linear-gradient(-45deg, #000000, #1a1a1a, #4a0000, #121212);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .card {
+        backdrop-filter: blur(10px);
+        background: rgba(30, 30, 30, 0.8);
+        border: 2px solid #ff4757;
+        transition: 0.5s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+    }
+</style>
 </head>
 <body>
 
