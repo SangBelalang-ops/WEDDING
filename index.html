@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>78 FIT - Detox Tour 2026</title>
+    <title>78 FIT - Official Detox Tour 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rock+Salt&family=Bebas+Neue&display=swap" rel="stylesheet">
     
     <style>
@@ -26,82 +26,93 @@
             overflow-x: hidden;
         }
 
-        /* LAYOUT UTAMA: Flexbox buat naruh setlist di samping */
         .main-wrapper {
             display: flex;
             flex-direction: row;
             align-items: flex-start;
             gap: 40px;
-            max-width: 900px;
+            max-width: 1100px;
             width: 100%;
         }
 
-        .container { width: 100%; max-width: 450px; position: relative; z-index: 10; }
+        .container { width: 100%; max-width: 420px; position: relative; z-index: 10; }
 
         /* SETLIST SIDEBAR */
         .setlist-sidebar {
             flex: 1;
-            padding-top: 100px; /* Biar sejajar sama bawah judul */
+            padding-top: 10px;
             text-align: left;
-            min-width: 200px;
+            min-width: 300px;
         }
 
         .setlist-title {
             font-family: 'Rock Salt', cursive;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #f1c40f;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px #f1c40f;
+            border-bottom: 2px solid #ff4757;
+            padding-bottom: 10px;
+            text-transform: uppercase;
         }
+
+        .song-list-scroll {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        /* Custom Scrollbar biar gahar */
+        .song-list-scroll::-webkit-scrollbar { width: 5px; }
+        .song-list-scroll::-webkit-scrollbar-thumb { background: #ff4757; border-radius: 10px; }
 
         .song-item {
             font-family: 'Permanent Marker', cursive;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #ffffff;
-            text-shadow: 0 0 8px #ffffff, 0 0 15px #ffffff;
-            margin-bottom: 12px;
+            text-shadow: 0 0 8px #ffffff;
+            margin-bottom: 6px;
             opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.8s ease-out;
+            transform: translateX(30px);
+            transition: all 0.5s ease-out;
+            line-height: 1.2;
         }
 
-        .song-item.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .song-item.show { opacity: 1; transform: translateX(0); }
+        .encore-label { color: #ff4757; font-size: 1.2rem; margin-top: 15px; }
 
-        /* STYLE KARTU & TYPOGRAPHY */
+        /* CARD STYLE */
         h1 {
             font-family: 'Permanent Marker', cursive;
             font-size: 4rem;
             color: #ff4757;
-            text-shadow: 4px 4px 0px #000, 0 0 20px rgba(255, 71, 87, 0.8);
+            text-shadow: 4px 4px 0px #000, 0 0 25px rgba(255, 71, 87, 0.9);
             margin: 0;
-            transform: rotate(-3deg);
+            transform: rotate(-2deg);
             text-align: center;
         }
 
         .card {
             backdrop-filter: blur(15px);
-            background: rgba(20, 20, 20, 0.8);
-            padding: 25px;
-            border-radius: 25px;
-            margin-top: 25px;
+            background: rgba(20, 20, 20, 0.85);
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
             border: 2px solid #333;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-            animation: borderGlow 5s ease-in-out infinite;
+            animation: borderGlow 4s ease-in-out infinite;
         }
 
         @keyframes borderGlow { 50% { border-color: #ff4757; } }
 
-        h3 { font-size: 1.8rem; color: #f1c40f; margin-top: 0; }
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .timer-box span { display: block; font-size: 24px; color: #ffffff; text-shadow: 2px 2px 5px #ff4757; }
+        h3 { font-size: 1.6rem; color: #f1c40f; margin-top: 0; letter-spacing: 2px; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .timer-box span { display: block; font-size: 22px; color: #ffffff; text-shadow: 2px 2px 5px #ff4757; }
+        .timer-box small { font-size: 9px; }
 
         button {
             font-family: 'Bebas Neue', sans-serif;
-            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            width: 100%; padding: 12px; border-radius: 10px; border: none;
             background: #ff4757; color: white; font-size: 1.4rem; cursor: pointer; transition: 0.3s;
             letter-spacing: 2px;
         }
@@ -109,18 +120,18 @@
         
         input[type="number"] {
             font-family: 'Bebas Neue', sans-serif;
-            width: 80%; padding: 10px; margin: 10px 0; border-radius: 10px;
+            width: 80%; padding: 8px; margin: 10px 0; border-radius: 8px;
             background: rgba(0,0,0,0.5); color: #2ecc71; text-align: center; font-size: 2rem; border: 1px solid #333;
         }
 
         .checklist { text-align: left; }
-        .item { display: flex; align-items: center; margin-bottom: 10px; font-size: 1.3rem; }
+        .item { display: flex; align-items: center; margin-bottom: 8px; font-size: 1.3rem; }
         input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; accent-color: #ff4757; }
 
-        /* Responsive: Kalau layar kecil, setlist pindah ke bawah */
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .main-wrapper { flex-direction: column; align-items: center; }
-            .setlist-sidebar { padding-top: 20px; text-align: center; }
+            .setlist-sidebar { padding-top: 30px; text-align: center; width: 100%; }
+            .song-list-scroll { max-height: none; overflow: visible; }
         }
     </style>
 </head>
@@ -132,7 +143,7 @@
         <div class="container">
             <h1>78 FIT</h1>
             <div class="card">
-                <h3>ROAD TO STADIUM</h3>
+                <h3>DETOX TOUR JAKARTA</h3>
                 <div class="timer-grid">
                     <div class="timer-box"><span id="days">00</span><small>Days</small></div>
                     <div class="timer-box"><span id="hours">00</span><small>Hours</small></div>
@@ -143,7 +154,7 @@
 
             <div class="card">
                 <h3>TARGET: 78.0 KG</h3>
-                <div id="lastWeight" style="color:#2ecc71; font-size:3rem; margin-bottom: 5px;">--</div>
+                <div id="lastWeight" style="color:#2ecc71; font-size:3.5rem; margin-bottom: 5px;">--</div>
                 <input type="number" id="currentWeight" step="0.1" placeholder="ENTER WEIGHT">
                 <button onclick="updateWeight()">SAVE PROGRESS</button>
             </div>
@@ -159,7 +170,7 @@
 
         <div class="setlist-sidebar">
             <div class="setlist-title">DETOX TOUR ASIA 2026 SETLIST:</div>
-            <div id="setlist-content"></div>
+            <div class="song-list-scroll" id="setlist-content"></div>
         </div>
     </div>
 
@@ -167,30 +178,32 @@
         const song = document.getElementById('themeSong');
         document.body.addEventListener('click', () => { if (song.paused) song.play(); }, { once: true });
 
+        // THE TRUE DETOX TOUR SETLIST
         const setlist = [
-            "1. Save Yourself", "2. Taking Off", "3. Wonder",
-            "4. Let Me Let You Go", "5. Renegades", "6. Neon",
-            "7. Vandalize", "8. Broken Heart", "9. Mighty Long Fall",
-            "10. The Beginning", "11. Wasted Nights", "ENCORE: Stand Out Fit In"
+            "1. Puppets Can’t Control You (JP)", "2. The Beginning", "3. Save Yourself (JP)",
+            "4. NASTY", "5. Renegades (JP)", "6. Party’s Over",
+            "7. Tiny Pieces", "8. Wherever You Are", "9. Make It Out Alive",
+            "10. Instrumental Solo", "11. C.U.R.I.O.S.I.T.Y.", "12. Dystopia (JP)",
+            "13. Delusion:All", "14. Stand Out Fit In (JP)", "15. Kimishidai Ressha",
+            "16. Tropical Therapy", "17. The Pilot </3", 
+            "--- ENCORE ---",
+            "18. +Matter", "19. We Are (JP)",
+            "--- ENCORE 2 ---",
+            "20. Kanzen Kankaku Dreamer"
         ];
 
-        // LOGIKA MUNCULIN SETLIST SATU PER SATU
         function initSetlist() {
             const container = document.getElementById('setlist-content');
             setlist.forEach((track, index) => {
                 const div = document.createElement('div');
                 div.className = 'song-item';
+                if(track.includes("ENCORE")) div.classList.add('encore-label');
                 div.innerText = track;
                 container.appendChild(div);
-
-                // Munculin satu-satu dengan delay
-                setTimeout(() => {
-                    div.classList.add('show');
-                }, 1000 + (index * 1500)); // Delay per lagu 1.5 detik
+                setTimeout(() => { div.classList.add('show'); }, 500 + (index * 600)); 
             });
         }
 
-        // TIMER LOGIC
         const targetDate = new Date("May 16, 2026 19:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
