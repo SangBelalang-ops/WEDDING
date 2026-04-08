@@ -1,40 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Project 75KG - Road to Jakarta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>78 FIT - Road to OOR Jakarta</title>
     <style>
-        body { font-family: 'Arial'; background: #1a1a1a; color: white; text-align: center; }
-        .card { background: #333; padding: 20px; border-radius: 15px; margin: 20px; border-left: 5px solid #e74c3c; }
-        .target-number { font-size: 50px; color: #f1c40f; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #e0e0e0; text-align: center; margin: 0; padding: 20px; }
+        h1 { color: #ff4757; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
+        .container { max-width: 500px; margin: auto; }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 15px; margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #333; }
+        .target-number { font-size: 40px; color: #f1c40f; font-weight: bold; margin: 10px 0; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .timer-box { background: #2f3542; padding: 10px; border-radius: 8px; }
+        .timer-box span { display: block; font-size: 20px; font-weight: bold; }
+        .timer-box small { font-size: 10px; color: #a4b0be; }
+        input[type="number"] { padding: 10px; border-radius: 5px; border: none; width: 60%; margin-bottom: 10px; background: #2f3542; color: white; text-align: center; }
+        button { padding: 10px 20px; border-radius: 5px; border: none; background: #ff4757; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #ff6b81; transform: scale(1.05); }
+        .checklist { text-align: left; padding: 0 20px; }
+        .checklist-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 18px; }
+        input[type="checkbox"] { margin-right: 15px; transform: scale(1.5); accent-color: #ff4757; }
     </style>
 </head>
 <body>
-    <h1>🔥 PROJECT 75KG 🔥</h1>
-    
+
+<div class="container">
+    <h1>78 FIT</h1>
+    <p><i>"Wherever you are, I'm always with you..."</i></p>
+
     <div class="card">
-        <h3>Countdown to One OK Rock</h3>
-        <div id="timer" class="target-number">Loading...</div>
+        <h3>COUNTDOWN TO ONE OK ROCK JKT</h3>
+        <div class="timer-grid" id="countdown">
+            <div class="timer-box"><span id="days">00</span><small>HARI</small></div>
+            <div class="timer-box"><span id="hours">00</span><small>JAM</small></div>
+            <div class="timer-box"><span id="minutes">00</span><small>MENIT</small></div>
+            <div class="timer-box"><span id="seconds">00</span><small>DETIK</small></div>
+        </div>
     </div>
 
     <div class="card">
-        <h3>Current Weight Target</h3>
-        <p class="target-number">75.0 KG</p>
-        <input type="number" id="currentWeight" placeholder="Input Berat Hari Ini">
-        <button onclick="saveWeight()">UPDATE</button>
+        <h3>TARGET: 78.0 KG</h3>
+        <p>Berat Terakhir: <span id="lastWeight" style="color:#2ecc71">--</span> kg</p>
+        <input type="number" id="currentWeight" step="0.1" placeholder="Berat hari ini (kg)">
+        <br>
+        <button onclick="updateWeight()">UPDATE PROGRESS</button>
     </div>
 
-    <div class="card">
-        <h3>Today's Workout</h3>
-        <ul style="list-style: none; padding: 0;">
-            <li><input type="checkbox"> Push Up 3 Set</li>
-            <li><input type="checkbox"> Angkat Beban (Dumbbell)</li>
-            <li><input type="checkbox"> Cardio 20 Menit</li>
-        </ul>
+    <div class="card checklist">
+        <h3>DAILY WORKOUT</h3>
+        <div class="checklist-item"><input type="checkbox"> Push Up 50x</div>
+        <div class="checklist-item"><input type="checkbox"> Angkat Dumbbell</div>
+        <div class="checklist-item"><input type="checkbox"> Cardio 15 Menit</div>
+        <div class="checklist-item"><input type="checkbox"> Defisit Kalori (No Snack!)</div>
     </div>
+</div>
 
-    <script>
-        // Masukin logika countdown ke 16 Mei 2026 di sini
-        // Masukin logika local storage biar datanya gak ilang pas refresh
-    </script>
+<script>
+    // LOGIKA COUNTDOWN
+    const targetDate = new Date("May 16, 2026 19:00:00").getTime();
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = d;
+        document.getElementById("hours").innerHTML = h;
+        document.getElementById("minutes").innerHTML = m;
+        document.getElementById("seconds").innerHTML = s;
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "CONCERT DAY! 🎸";
+        }
+    }, 1000);
+
+    // LOGIKA SIMPAN BERAT BADAN
+    function updateWeight() {
+        const weight = document.getElementById("currentWeight").value;
+        if (weight) {
+            localStorage.setItem("userWeight", weight);
+            document.getElementById("lastWeight").innerText = weight;
+            alert("Mantap! Progress tersimpan, Bos!");
+        }
+    }
+
+    // Load data lama pas refresh
+    window.onload = function() {
+        const savedWeight = localStorage.getItem("userWeight");
+        if (savedWeight) {
+            document.getElementById("lastWeight").innerText = savedWeight;
+        }
+    }
+</script>
+
 </body>
 </html>
