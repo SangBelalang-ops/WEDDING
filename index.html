@@ -21,25 +21,29 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
         .container { width: 100%; max-width: 500px; }
 
         .card {
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px;
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 25px;
             border-radius: 20px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 71, 87, 0.4);
+            border: 1px solid rgba(255, 71, 87, 0.5);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            transition: 0.3s;
         }
 
-        h1 { font-size: 3.5rem; color: #ff4757; text-shadow: 0 0 15px #ff4757; margin: 10px 0; letter-spacing: 5px; }
+        .card:hover { transform: scale(1.02); border-color: #ff4757; }
+
+        h1 { font-size: 3.5rem; color: #ff4757; text-shadow: 0 0 20px #ff4757; margin: 10px 0; letter-spacing: 5px; }
         
         /* TIMER */
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
         .timer-box { background: rgba(255, 71, 87, 0.2); padding: 10px; border-radius: 10px; border: 1px solid #ff4757; }
         .timer-box span { display: block; font-size: 22px; font-weight: bold; color: #f1c40f; }
         .timer-box small { font-size: 9px; text-transform: uppercase; opacity: 0.8; }
@@ -49,29 +53,29 @@
             width: 100%; padding: 12px; border-radius: 10px; border: none;
             font-weight: bold; cursor: pointer; transition: 0.3s; margin: 5px 0;
         }
-        .btn-red { background: #ff4757; color: white; }
+        .btn-red { background: #ff4757; color: white; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3); }
         .btn-green { background: #2ecc71; color: white; font-size: 1.1rem; }
-        .btn-music { background: rgba(241, 196, 15, 0.2); color: #f1c40f; border: 1px solid #f1c40f; width: 48%; }
+        .btn-music { background: rgba(241, 196, 15, 0.1); color: #f1c40f; border: 1px solid #f1c40f; width: 48%; }
         
         input[type="number"] {
-            width: 80%; padding: 12px; margin: 10px 0; border-radius: 10px;
-            border: none; background: #333; color: white; text-align: center; font-size: 1.2rem;
+            width: 85%; padding: 12px; margin: 10px 0; border-radius: 10px;
+            border: none; background: #333; color: white; text-align: center; font-size: 1.3rem;
         }
 
         /* CHECKLIST */
         .checklist { text-align: left; }
         .item { display: flex; align-items: center; margin-bottom: 12px; font-size: 1.1rem; }
-        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: #ff4757; }
+        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: #ff4757; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>78 FIT</h1>
-        <p style="font-style: italic; opacity: 0.7; margin-bottom: 20px;">"Make it to the top!"</p>
+        <p style="font-style: italic; opacity: 0.8; margin-bottom: 25px; letter-spacing: 1px;">"Whatever you are, I'm always with you."</p>
 
-        <div class="card">
-            <h3 style="margin-top:0; color:#f1c40f;">🎧 GYM ANTHEM</h3>
+        <div class="card" style="border-color: #f1c40f;">
+            <h3 style="margin-top:0; color:#f1c40f; letter-spacing: 2px;">🎧 GYM ANTHEM</h3>
             <audio id="audioPlayer" loop>
                 <source id="audioSource" src="lagu1.mp3" type="audio/mpeg">
             </audio>
@@ -79,11 +83,12 @@
                 <button class="btn-music" onclick="changeTrack('lagu1.mp3')">TRACK 1</button>
                 <button class="btn-music" onclick="changeTrack('lagu2.mp3')">TRACK 2</button>
             </div>
-            <button id="playBtn" class="btn-green" style="margin-top:15px;" onclick="togglePlay()">▶ PLAY MUSIC</button>
+            <button id="playBtn" class="btn-green" style="margin-top:15px;" onclick="togglePlay()">▶ START MUSIC</button>
+            <p style="font-size: 10px; margin-top: 10px; opacity: 0.6;">Klik layar untuk mengaktifkan theme song otomatis!</p>
         </div>
 
         <div class="card">
-            <h3 style="margin:0;">ROAD TO ONE OK ROCK JKT</h3>
+            <h3 style="margin:0; letter-spacing: 2px;">ROAD TO ONE OK ROCK JKT</h3>
             <div class="timer-grid">
                 <div class="timer-box"><span id="days">00</span><small>Hari</small></div>
                 <div class="timer-box"><span id="hours">00</span><small>Jam</small></div>
@@ -93,35 +98,36 @@
         </div>
 
         <div class="card">
-            <h3 style="margin:0;">TARGET: 78.0 KG</h3>
-            <p>Berat Terakhir: <span id="lastWeight" style="color:#2ecc71; font-weight:bold; font-size:1.4rem;">--</span> kg</p>
-            <input type="number" id="currentWeight" step="0.1" placeholder="Berat hari ini">
-            <button class="btn-red" onclick="updateWeight()">SIMPAN PROGRESS</button>
+            <h3 style="margin:0; letter-spacing: 1px;">TARGET: 78.0 KG</h3>
+            <p style="margin-bottom: 5px;">Progress Terakhir:</p>
+            <div id="lastWeight" style="color:#2ecc71; font-weight:bold; font-size:2.5rem; margin-bottom: 10px;">--</div>
+            <input type="number" id="currentWeight" step="0.1" placeholder="Berat badan (kg)">
+            <button class="btn-red" onclick="updateWeight()">UPDATE BATTLE PROGRESS</button>
         </div>
 
         <div class="card checklist">
-            <h3 style="text-align: center; margin-top:0;">DAILY BATTLE</h3>
-            <div class="item"><input type="checkbox"> Push Up 50x</div>
-            <div class="item"><input type="checkbox"> Angkat Dumbbell</div>
+            <h3 style="text-align: center; margin-top:0; letter-spacing: 2px;">DAILY BATTLE</h3>
+            <div class="item"><input type="checkbox"> Push Up 50x (No Excuses!)</div>
+            <div class="item"><input type="checkbox"> Angkat Beban / Dumbbell</div>
             <div class="item"><input type="checkbox"> Cardio 15 Menit</div>
-            <div class="item"><input type="checkbox"> No Snacks (Kacang Arab No!)</div>
+            <div class="item"><input type="checkbox"> Defisit Kalori (No Snacks!)</div>
         </div>
     </div>
 
     <script>
-        // MUSIC LOGIC
         const audio = document.getElementById('audioPlayer');
         const audioSource = document.getElementById('audioSource');
         const playBtn = document.getElementById('playBtn');
 
+        // MUSIC LOGIC
         function togglePlay() {
             if (audio.paused) {
                 audio.play();
-                playBtn.innerHTML = "⏸ PAUSE";
+                playBtn.innerHTML = "⏸ PAUSE ANTHEM";
                 playBtn.style.background = "#e67e22";
             } else {
                 audio.pause();
-                playBtn.innerHTML = "▶ PLAY MUSIC";
+                playBtn.innerHTML = "▶ RESUME ANTHEM";
                 playBtn.style.background = "#2ecc71";
             }
         }
@@ -130,7 +136,7 @@
             audioSource.src = fileName;
             audio.load();
             audio.play();
-            playBtn.innerHTML = "⏸ PAUSE";
+            playBtn.innerHTML = "⏸ PAUSE ANTHEM";
             playBtn.style.background = "#e67e22";
         }
 
@@ -145,18 +151,29 @@
             document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
-        // STORAGE LOGIC
+        // STORAGE & AUTOPLAY LOGIC
         function updateWeight() {
             const w = document.getElementById("currentWeight").value;
             if(w) {
                 localStorage.setItem("weight78", w);
-                document.getElementById("lastWeight").innerText = w;
-                alert("Gas terus, Bos! Progress aman.");
+                document.getElementById("lastWeight").innerText = w + " KG";
+                alert("Gaspol! Progress tersimpan, Bos!");
             }
         }
+
         window.onload = function() {
+            // Load berat badan
             const saved = localStorage.getItem("weight78");
-            if(saved) document.getElementById("lastWeight").innerText = saved;
+            if(saved) document.getElementById("lastWeight").innerText = saved + " KG";
+
+            // TRIK AUTOPLAY: Sekali klik di mana saja, musik nyala!
+            document.body.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.innerHTML = "⏸ PAUSE ANTHEM";
+                    playBtn.style.background = "#e67e22";
+                }
+            }, { once: true });
         }
     </script>
 </body>
