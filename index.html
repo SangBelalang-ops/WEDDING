@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>78 FIT - Official Detox Tour 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rock+Salt&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Anek+Malayalam:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+        /* BASE STYLE: Cyberpunk Neon */
         body {
             background-image: url('https://i.postimg.cc/Xq5zhmX4/giphy-(3).gif');
             background-size: cover;
@@ -15,7 +16,8 @@
             background-attachment: fixed;
             background-color: rgba(0, 0, 0, 0.7);
             background-blend-mode: darken;
-            font-family: 'Bebas Neue', sans-serif;
+            /* Font dasar diganti jadi tajam/modern */
+            font-family: 'Anek Malayalam', sans-serif;
             color: #ffffff;
             margin: 0;
             padding: 20px;
@@ -37,7 +39,52 @@
 
         .container { width: 100%; max-width: 420px; position: relative; z-index: 10; }
 
-        /* SETLIST SIDEBAR */
+        /* --- H1: ANIMASI PUTIH BERSINAR LEWAT --- */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
+            color: #ffffff;
+            text-align: center;
+            margin: 0 0 10px 0;
+            letter-spacing: 5px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            /* Glow dasar bernafas */
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.5);
+            animation: neonPulse 4s ease-in-out infinite;
+            overflow: hidden; /* Wajib buat animasi lewat */
+        }
+
+        /* Pseudo-element buat cahaya tajam lewat */
+        h1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+            transform: skewX(-30deg); /* Bikin cahayanya miring tajam */
+            animation: shineThrough 6s infinite;
+        }
+
+        /* Animasi cahaya lewat */
+        @keyframes shineThrough {
+            0% { left: -150%; }
+            30% { left: 150%; }
+            100% { left: 150%; }
+        }
+
+        /* Animasi Glow Neon Nafas */
+        @keyframes neonPulse {
+            0% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.7); }
+            50% { text-shadow: 0 0 25px rgba(0, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.7); }
+        }
+
+        /* --- SETLIST SIDEBAR --- */
         .setlist-sidebar {
             flex: 1;
             padding-top: 10px;
@@ -46,12 +93,12 @@
         }
 
         .setlist-title {
-            font-family: 'Rock Salt', cursive;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1rem;
-            color: #f1c40f;
+            color: #00ffff; /* Cyan Neon */
             margin-bottom: 15px;
-            text-shadow: 0 0 10px #f1c40f;
-            border-bottom: 2px solid #ff4757;
+            text-shadow: 0 0 10px #00ffff;
+            border-bottom: 2px solid #00ffff;
             padding-bottom: 10px;
             text-transform: uppercase;
         }
@@ -61,77 +108,92 @@
             overflow-y: auto;
             padding-right: 10px;
         }
-        /* Custom Scrollbar biar gahar */
+        /* Custom Scrollbar */
         .song-list-scroll::-webkit-scrollbar { width: 5px; }
-        .song-list-scroll::-webkit-scrollbar-thumb { background: #ff4757; border-radius: 10px; }
+        .song-list-scroll::-webkit-scrollbar-thumb { background: #00ffff; border-radius: 10px; }
 
         .song-item {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 1rem;
+            font-family: 'Anek Malayalam', sans-serif; /* Pake font basic biar tajam */
+            font-weight: 700;
+            font-size: 1.1rem;
             color: #ffffff;
-            text-shadow: 0 0 8px #ffffff;
-            margin-bottom: 6px;
+            text-shadow: 0 0 5px rgba(255,255,255,0.8);
+            margin-bottom: 8px;
             opacity: 0;
             transform: translateX(30px);
             transition: all 0.5s ease-out;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .song-item.show { opacity: 1; transform: translateX(0); }
-        .encore-label { color: #ff4757; font-size: 1.2rem; margin-top: 15px; }
+        .encore-label { color: #00ffff; font-size: 1.3rem; margin-top: 15px; font-family: 'Orbitron', sans-serif; }
 
-        /* CARD STYLE */
-        h1 {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 4rem;
-            color: #ff4757;
-            text-shadow: 4px 4px 0px #000, 0 0 25px rgba(255, 71, 87, 0.9);
-            margin: 0;
-            transform: rotate(-2deg);
-            text-align: center;
-        }
-
+        /* --- CARD STYLE (Blue Neon) --- */
         .card {
             backdrop-filter: blur(15px);
-            background: rgba(20, 20, 20, 0.85);
+            background: rgba(10, 10, 20, 0.85); /* Agak kebiruan */
             padding: 20px;
-            border-radius: 20px;
+            border-radius: 15px;
             margin-top: 20px;
-            border: 2px solid #333;
+            border: 2px solid #111;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-            animation: borderGlow 4s ease-in-out infinite;
+            animation: borderGlowBlue 4s ease-in-out infinite;
         }
 
-        @keyframes borderGlow { 50% { border-color: #ff4757; } }
+        @keyframes borderGlowBlue { 
+            50% { border-color: #00ffff; box-shadow: 0 0 20px rgba(0,255,255,0.3); } 
+        }
 
-        h3 { font-size: 1.6rem; color: #f1c40f; margin-top: 0; letter-spacing: 2px; }
+        h3 { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem; 
+            color: #00ffff; 
+            margin-top: 0; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* --- TIMER --- */
         .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-        .timer-box span { display: block; font-size: 22px; color: #ffffff; text-shadow: 2px 2px 5px #ff4757; }
-        .timer-box small { font-size: 9px; }
-
-        button {
-            font-family: 'Bebas Neue', sans-serif;
-            width: 100%; padding: 12px; border-radius: 10px; border: none;
-            background: #ff4757; color: white; font-size: 1.4rem; cursor: pointer; transition: 0.3s;
-            letter-spacing: 2px;
+        .timer-box { background: rgba(0, 255, 255, 0.05); padding: 10px; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.2); }
+        .timer-box span { 
+            font-family: 'Orbitron', sans-serif;
+            display: block; 
+            font-size: 24px; 
+            color: #ffffff; 
+            text-shadow: 0 0 10px #00ffff; 
         }
-        button:hover { background: #ffffff; color: #ff4757; }
+        .timer-box small { font-size: 9px; text-transform: uppercase; }
+
+        /* --- BUTTONS --- */
+        button {
+            font-family: 'Orbitron', sans-serif;
+            width: 100%; padding: 12px; border-radius: 10px; border: none;
+            background: linear-gradient(45deg, #00ffff, #0055ff); /* Gradient Button */
+            color: white; font-size: 1.3rem; cursor: pointer; transition: 0.3s;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0,255,255,0.2);
+        }
+        button:hover { background: #ffffff; color: #000000; box-shadow: 0 5px 25px rgba(0,255,255,0.5); }
         
         input[type="number"] {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             width: 80%; padding: 8px; margin: 10px 0; border-radius: 8px;
-            background: rgba(0,0,0,0.5); color: #2ecc71; text-align: center; font-size: 2rem; border: 1px solid #333;
+            background: rgba(0,0,0,0.7); color: #00ffff; text-align: center; font-size: 2.2rem; border: 1px solid #333;
         }
+        input[type="number"]:focus { border-color: #00ffff; outline: none; }
 
+        /* --- CHECKLIST --- */
         .checklist { text-align: left; }
-        .item { display: flex; align-items: center; margin-bottom: 8px; font-size: 1.3rem; }
-        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; accent-color: #ff4757; }
+        .item { font-family: 'Orbitron', sans-serif; display: flex; align-items: center; margin-bottom: 8px; font-size: 1.2rem; }
+        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; accent-color: #00ffff; }
 
         @media (max-width: 850px) {
             .main-wrapper { flex-direction: column; align-items: center; }
             .setlist-sidebar { padding-top: 30px; text-align: center; width: 100%; }
             .song-list-scroll { max-height: none; overflow: visible; }
+            h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -142,6 +204,7 @@
     <div class="main-wrapper">
         <div class="container">
             <h1>78 FIT</h1>
+            
             <div class="card">
                 <h3>DETOX TOUR JAKARTA</h3>
                 <div class="timer-grid">
@@ -154,7 +217,7 @@
 
             <div class="card">
                 <h3>TARGET: 78.0 KG</h3>
-                <div id="lastWeight" style="color:#2ecc71; font-size:3.5rem; margin-bottom: 5px;">--</div>
+                <div id="lastWeight" style="color:#00ffff; font-size:3.5rem; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 15px #00ffff; margin-bottom: 5px;">--</div>
                 <input type="number" id="currentWeight" step="0.1" placeholder="ENTER WEIGHT">
                 <button onclick="updateWeight()">SAVE PROGRESS</button>
             </div>
@@ -178,7 +241,7 @@
         const song = document.getElementById('themeSong');
         document.body.addEventListener('click', () => { if (song.paused) song.play(); }, { once: true });
 
-        // THE TRUE DETOX TOUR SETLIST
+        // TRUE SETLIST
         const setlist = [
             "1. Puppets Can’t Control You (JP)", "2. The Beginning", "3. Save Yourself (JP)",
             "4. NASTY", "5. Renegades (JP)", "6. Party’s Over",
