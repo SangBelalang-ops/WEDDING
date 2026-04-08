@@ -1,185 +1,40 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Piter Andreas Sinaga & Pasangan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Project 75KG - Road to Jakarta</title>
     <style>
-        :root { 
-            --gold: #b8860b; 
-            --dark: #2c3e50; 
-            --pink: #ffb6c1; 
-            --theme-bg: rgba(255, 248, 240, 0.9); 
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body { 
-            font-family: 'Poppins', sans-serif; color: var(--dark); overflow-x: hidden; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://i.postimg.cc/CKC7rmM6/1369497e8b83e60fd74b77213a072c41.webp') fixed center/cover;
-        }
-
-        /* LIGHTBOX UNTUK ZOOM HD */
-        #lightbox {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 10000;
-            display: none; overflow: auto;
-            justify-content: center; align-items: flex-start;
-            padding: 40px 10px;
-            cursor: pointer;
-        }
-        #lightbox img { 
-            width: 95%; max-width: 1000px;
-            height: auto; border: 5px solid white; border-radius: 10px; 
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            animation: zoomIn 0.3s ease;
-            cursor: default;
-        }
-        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        /* Navigasi */
-        nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); padding: 10px 25px; border-radius: 30px; display: flex; gap: 15px; z-index: 1000; border: 1px solid var(--gold); backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        nav a { text-decoration: none; color: var(--dark); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
-
-        section { padding: 80px 20px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--gold); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin: 15px 0; }
-        
-        /* Gallery Grid */
-        #gallery { background: var(--theme-bg); backdrop-filter: blur(8px); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-item { cursor: pointer; border-radius: 15px; border: 5px solid white; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; background: #eee; }
-        .gallery-item:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .gallery-item img { width: 100%; height: 450px; object-fit: cover; display: block; }
-
-        /* Wish Section */
-        #wish { background: rgba(255, 240, 230, 0.85); backdrop-filter: blur(5px); }
-        form { max-width: 450px; margin: 0 auto 30px; background: white; padding: 25px; border-radius: 15px; text-align: left; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        input, textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 8px; font-family: inherit; outline: none; background: #fffaf5; }
-        button { width: 100%; background: var(--gold); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        
-        .wish-container { max-width: 450px; margin: 0 auto; max-height: 350px; overflow-y: auto; text-align: left; padding: 5px; }
-        .wish-card { background: white; padding: 15px; border-radius: 10px; border-left: 5px solid var(--gold); margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-
-        /* Gift Section */
-        #gift { background: var(--theme-bg); backdrop-filter: blur(8px); }
-        .bank-card { 
-            background: white; padding: 30px 20px; border-radius: 20px; 
-            border: 1px solid #ddd; max-width: 380px; margin: 20px auto; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .bca-logo { width: 140px; margin-bottom: 15px; }
-
-        .sakura { position: fixed; top: -10%; background: var(--pink); border-radius: 100% 0 100% 0; opacity: 0.8; z-index: 9999; pointer-events: none; animation: fall linear infinite; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+        body { font-family: 'Arial'; background: #1a1a1a; color: white; text-align: center; }
+        .card { background: #333; padding: 20px; border-radius: 15px; margin: 20px; border-left: 5px solid #e74c3c; }
+        .target-number { font-size: 50px; color: #f1c40f; }
     </style>
 </head>
 <body>
-    <nav><a href="#home">Home</a><a href="#gallery">Gallery</a><a href="#wish">Ucapan</a><a href="#gift">Kado</a></nav>
-
-    <div id="lightbox" onclick="this.style.display='none'">
-        <img id="lightbox-img" src="" onclick="event.stopPropagation()">
+    <h1>🔥 PROJECT 75KG 🔥</h1>
+    
+    <div class="card">
+        <h3>Countdown to One OK Rock</h3>
+        <div id="timer" class="target-number">Loading...</div>
     </div>
 
-    <section id="home" style="color:white">
-        <p>THE WEDDING OF</p>
-        <h1>Piter Andreas Sinaga<br>& Pasangan</h1>
-        <p>( MASIH DICARI )</p>
-        <div style="font-size: 1.5rem; margin-top: 10px; font-weight: 600;">16 April 2026</div>
-    </section>
+    <div class="card">
+        <h3>Current Weight Target</h3>
+        <p class="target-number">75.0 KG</p>
+        <input type="number" id="currentWeight" placeholder="Input Berat Hari Ini">
+        <button onclick="saveWeight()">UPDATE</button>
+    </div>
 
-    <section id="gallery">
-        <h2 style="font-family:'Dancing Script'; font-size:3rem; color:var(--gold); margin-bottom:20px;">Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/5ySsHgT7/a8ad6505bc6aced7c5a7ff59d819f1bc.webp"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/zBSCpBjQ/d6b5d8fc94d8d3e504c6bfc61fdd29b4.webp"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/j2tXrN2L/3297c67a0978b6edc5d1cc85bff3143e.webp"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/kgBy97J8/c95b89d7fe8bcd4111be77300932c2d1.webp"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/gk4MmMvm/dbdec711c398ab692aa1d8340b85edf8.jpg"></div>
-            <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.postimg.cc/bwB32sC9/82c4311800704a7bd83667ba05948655.jpg"></div>
-        </div>
-    </section>
-
-    <section id="wish">
-        <h2 style="font-family:'Dancing Script'; font-size:3rem; color:var(--gold); margin-bottom:20px;">Wish</h2>
-        <form id="guestbook">
-            <input type="text" id="nama" placeholder="Nama" required>
-            <textarea id="pesan" placeholder="Ucapan..." rows="3" required></textarea>
-            <button type="submit" id="btnKirim">Kirim Ucapan</button>
-        </form>
-        <div id="display-wish" class="wish-container"></div>
-    </section>
-
-    <section id="gift">
-        <h2 style="font-family:'Dancing Script'; font-size:3rem; color:var(--gold); margin-bottom:20px;">Wedding Gift</h2>
-        <div class="bank-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1200px-Bank_Central_Asia.svg.png" alt="BCA Logo" class="bca-logo">
-            <p style="font-size: 1.6rem; font-weight: 600; color: #004a99; letter-spacing: 1px;">3491684397</p>
-            <p style="margin-top: 5px; color: #555;">a.n Piter Andreas Sinaga</p>
-        </div>
-    </section>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <div class="card">
+        <h3>Today's Workout</h3>
+        <ul style="list-style: none; padding: 0;">
+            <li><input type="checkbox"> Push Up 3 Set</li>
+            <li><input type="checkbox"> Angkat Beban (Dumbbell)</li>
+            <li><input type="checkbox"> Cardio 20 Menit</li>
+        </ul>
+    </div>
 
     <script>
-        const config = {
-            apiKey: "AIzaSyCtmSRH_Y1NtGaN1VNLb-1jfQaMum5lOPk",
-            authDomain: "wedding-f13d8.firebaseapp.com",
-            projectId: "wedding-f13d8",
-            storageBucket: "wedding-f13d8.firebasestorage.app",
-            messagingSenderId: "933008597878",
-            appId: "1:933008597878:web:77d64d919b3bad44ded057",
-            databaseURL: "https://wedding-f13d8-default-rtdb.asia-southeast1.firebasedatabase.app"
-        };
-        firebase.initializeApp(config);
-        const db = firebase.database();
-
-        function zoomImg(el) {
-            const imgSrc = el.querySelector('img').src;
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.src = imgSrc;
-            lightbox.style.display = 'flex';
-            lightbox.scrollTop = 0;
-        }
-
-        document.getElementById('guestbook').onsubmit = function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btnKirim');
-            const n = document.getElementById('nama').value;
-            const p = document.getElementById('pesan').value;
-            btn.disabled = true; btn.innerText = "Lagi ngirim...";
-            db.ref('wishes').push({ nama: n, pesan: p, waktu: Date.now() })
-            .then(() => {
-                alert("Terkirim, Bree!");
-                document.getElementById('guestbook').reset();
-                btn.disabled = false; btn.innerText = "Kirim Ucapan";
-            }).catch((err) => {
-                alert("Eror Bree: " + err.message);
-                btn.disabled = false; btn.innerText = "Kirim Ucapan";
-            });
-        };
-
-        db.ref('wishes').on('value', (snap) => {
-            const data = snap.val();
-            const box = document.getElementById('display-wish');
-            box.innerHTML = '';
-            if (data) {
-                Object.values(data).reverse().forEach(v => {
-                    box.innerHTML += `<div class="wish-card"><strong>${v.nama}</strong><p>${v.pesan}</p></div>`;
-                });
-            }
-        });
-
-        setInterval(() => {
-            const s = document.createElement('div');
-            s.className = 'sakura';
-            s.style.left = Math.random() * 100 + 'vw';
-            s.style.width = s.style.height = (Math.random() * 10 + 10) + 'px';
-            s.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            document.body.appendChild(s);
-            setTimeout(() => s.remove(), 5000);
-        }, 300);
+        // Masukin logika countdown ke 16 Mei 2026 di sini
+        // Masukin logika local storage biar datanya gak ilang pas refresh
     </script>
 </body>
 </html>
