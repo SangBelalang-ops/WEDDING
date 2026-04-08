@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>78 FIT - Road to OOR Jakarta</title>
     <style>
+        /* BASE STYLE & BACKGROUND */
         body {
-            /* BACKGROUND GIF ONE OK ROCK */
             background-image: url('https://i.postimg.cc/Xq5zhmX4/giphy-(3).gif');
             background-size: cover;
             background-position: center;
@@ -14,7 +14,7 @@
             background-attachment: fixed;
             background-color: rgba(0, 0, 0, 0.7);
             background-blend-mode: darken;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             color: #ffffff;
             margin: 0;
             padding: 20px;
@@ -23,45 +23,116 @@
             align-items: center;
             min-height: 100vh;
             cursor: pointer;
+            overflow-x: hidden; /* Biar partikel gak bikin scroll horizontal */
         }
 
-        .container { width: 100%; max-width: 500px; }
+        /* CONTAINER MELAYANG */
+        .container { width: 100%; max-width: 500px; position: relative; z-index: 10; }
 
+        /* KARTU MENU GAHAR (GLOW ANIMASI) */
         .card {
-            background: rgba(20, 20, 20, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 71, 87, 0.5);
+            backdrop-filter: blur(15px);
+            background: rgba(20, 20, 20, 0.75);
+            padding: 30px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #333; /* Warna dasar border */
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+            transition: 0.3s;
+            animation: borderGlow 5s ease-in-out infinite; /* Animasi Glow */
         }
 
-        h1 { font-size: 3.5rem; color: #ff4757; text-shadow: 0 0 20px #ff4757; margin: 10px 0; letter-spacing: 5px; }
-        
-        /* TIMER */
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
-        .timer-box { background: rgba(255, 71, 87, 0.2); padding: 10px; border-radius: 10px; border: 1px solid #ff4757; }
-        .timer-box span { display: block; font-size: 22px; font-weight: bold; color: #f1c40f; }
-        .timer-box small { font-size: 9px; text-transform: uppercase; opacity: 0.8; }
+        /* Animasi Border Glow Bernafas */
+        @keyframes borderGlow {
+            0% { border-color: #333; box-shadow: 0 0 5px rgba(255, 71, 87, 0.2); }
+            50% { border-color: #ff4757; box-shadow: 0 0 25px rgba(255, 71, 87, 0.6); }
+            100% { border-color: #333; box-shadow: 0 0 5px rgba(255, 71, 87, 0.2); }
+        }
 
-        /* BUTTONS */
+        .card:hover { transform: scale(1.02); animation-play-state: paused; /* Matiin animasi pas di-hover */ border-color: #ff6b81;}
+
+        /* JUDUL UTAMA (NEON EFFECT) */
+        h1 {
+            font-size: 3.8rem;
+            color: #ff4757;
+            text-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 40px #ff4757;
+            margin: 15px 0;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        h3 { letter-spacing: 3px; color: #ced4da; font-weight: 300; }
+        
+        /* TIMER (3D EFFECT) */
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px; }
+        .timer-box {
+            background: rgba(255, 71, 87, 0.1);
+            padding: 15px 10px;
+            border-radius: 15px;
+            border: 1px solid rgba(2ff4757, 0.3);
+            position: relative;
+        }
+        
+        .timer-box span {
+            display: block;
+            font-size: 26px;
+            font-weight: bold;
+            color: #f1c40f;
+            text-shadow: 2px 2px 0px #c0392b; /* Efek 3D Shadow */
+        }
+        .timer-box small { font-size: 10px; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
+
+        /* BUTTONS GAHAR */
         button {
-            width: 100%; padding: 12px; border-radius: 10px; border: none;
-            background: #ff4757; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 5px 0;
+            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            background: linear-gradient(45deg, #ff4757, #e056fd); /* Gradient Button */
+            color: white; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin: 10px 0;
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+            letter-spacing: 1px;
         }
-        button:hover { background: #ff6b81; }
+        button:hover { background: linear-gradient(45deg, #e056fd, #ff4757); transform: translateY(-3px); }
         
+        /* INPUT STYLE */
         input[type="number"] {
-            width: 85%; padding: 12px; margin: 10px 0; border-radius: 10px;
-            border: none; background: #333; color: white; text-align: center; font-size: 1.3rem;
+            width: 88%; padding: 15px; margin: 15px 0; border-radius: 12px;
+            border: 2px solid #333; background: rgba(0,0,0,0.5); color: white; text-align: center; font-size: 1.4rem;
+        }
+        input[type="number"]:focus { border-color: #ff4757; outline: none;}
+
+        /* BATTLE LOG (CHECKLIST) */
+        .checklist { text-align: left; }
+        .item { display: flex; align-items: center; margin-bottom: 15px; font-size: 1.2rem; transition: 0.2s; }
+        .item:hover { transform: translateX(5px); }
+        input[type="checkbox"] { width: 24px; height: 24px; margin-right: 18px; accent-color: #e056fd; cursor: pointer; }
+
+        /* PARTIKEL JATUH (EFEK METEOR/API) */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Di belakang konten tapi di depan GIF */
+            pointer-events: none; /* Biar gak bisa diklik */
         }
 
-        /* CHECKLIST */
-        .checklist { text-align: left; }
-        .item { display: flex; align-items: center; margin-bottom: 12px; font-size: 1.1rem; }
-        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: #ff4757; cursor: pointer; }
+        .particle {
+            position: absolute;
+            background: linear-gradient(#ff4757, transparent); /* Warna partikel */
+            width: 2px;
+            height: 80px; /* Panjang meteor */
+            opacity: 0.5;
+            animation: fall linear infinite;
+        }
+
+        /* Animasi Partikel Jatuh */
+        @keyframes fall {
+            0% { transform: translateY(-100px) translateX(0px) rotate(15deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(100vh) translateX(100px) rotate(15deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -70,12 +141,14 @@
         <source src="lagu1.mp3" type="audio/mpeg">
     </audio>
 
+    <div class="particles-container" id="particles"></div>
+
     <div class="container">
         <h1>78 FIT</h1>
-        <p style="font-style: italic; opacity: 0.7; margin-bottom: 25px; text-align: center;">"Whatever you are, I'm always with you."</p>
+        <p style="font-style: italic; opacity: 0.7; margin-bottom: 35px; text-align: center; letter-spacing: 2px;">"Wherever you are, I'm always with you."</p>
 
         <div class="card">
-            <h3 style="margin:0; letter-spacing: 2px;">ROAD TO ONE OK ROCK JKT</h3>
+            <h3 style="margin:0;">ROAD TO STADIUM</h3>
             <div class="timer-grid">
                 <div class="timer-box"><span id="days">00</span><small>Hari</small></div>
                 <div class="timer-box"><span id="hours">00</span><small>Jam</small></div>
@@ -85,18 +158,19 @@
         </div>
 
         <div class="card">
-            <h3 style="margin:0;">TARGET: 78.0 KG</h3>
-            <div id="lastWeight" style="color:#2ecc71; font-weight:bold; font-size:2.5rem; margin: 10px 0;">--</div>
+            <h3 style="margin:0;">BATTLE TARGET: 78.0 KG</h3>
+            <div style="margin: 15px 0 5px 0; font-size: 1rem; color: #bdc3c7;">Progress Terakhir:</div>
+            <div id="lastWeight" style="color:#2ecc71; font-weight:bold; font-size:3rem; text-shadow: 0 0 15px #2ecc71; margin-bottom: 10px;">--</div>
             <input type="number" id="currentWeight" step="0.1" placeholder="Update Berat (kg)">
-            <button onclick="updateWeight()">SIMPAN BATTLE PROGRESS</button>
+            <button onclick="updateWeight()">SAVE BATTLE PROGRESS</button>
         </div>
 
         <div class="card checklist">
-            <h3 style="text-align: center; margin-top:0;">DAILY BATTLE</h3>
-            <div class="item"><input type="checkbox"> Push Up 50x</div>
-            <div class="item"><input type="checkbox"> Angkat Beban</div>
-            <div class="item"><input type="checkbox"> Cardio 15 Menit</div>
-            <div class="item"><input type="checkbox"> Defisit Kalori (No Snacks!)</div>
+            <h3 style="text-align: center; margin-top:0;">DAILY MISSION</h3>
+            <div class="item"><input type="checkbox"> Push Up 50x (No Excuses!)</div>
+            <div class="item"><input type="checkbox"> Angkat Beban / Dumbbell</div>
+            <div class="item"><input type="checkbox"> Cardio 15 Menit (Run!)</div>
+            <div class="item"><input type="checkbox"> No Snacks! (Tersnacks Gak Dulu)</div>
         </div>
     </div>
 
@@ -125,15 +199,40 @@
         function updateWeight() {
             const w = document.getElementById("currentWeight").value;
             if(w) {
-                localStorage.setItem("weight78", w);
+                localStorage.setItem("weight78_pro", w);
                 document.getElementById("lastWeight").innerText = w + " KG";
-                alert("Progress tersimpan! Jangan kasih kendor!");
+                alert("Gas terus! Progress tersimpan!");
             }
         }
 
         window.onload = function() {
-            const saved = localStorage.getItem("weight78");
+            const saved = localStorage.getItem("weight78_pro");
             if(saved) document.getElementById("lastWeight").innerText = saved + " KG";
+
+            // LOGIKA BIKIN PARTIKEL JATUH
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20; // Jumlah meteor jatuh
+
+            for (let i = 0; i < particleCount; i++) {
+                createParticle();
+            }
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random posisi, kecepatan, delay
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2-5 detik
+                particle.style.animationDelay = (Math.random() * 5) + 's'; // Delay random sampai 5 detik
+                
+                particlesContainer.appendChild(particle);
+
+                // Hapus dan buat baru kalau sudah kelar animasi biar gak ngebruk
+                particle.addEventListener('animationiteration', () => {
+                    particle.style.left = Math.random() * 100 + 'vw';
+                });
+            }
         }
     </script>
 </body>
