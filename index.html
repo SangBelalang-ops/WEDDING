@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>78 FIT - OOR Minimalist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Oswald:wght@300;600;700&display=swap" rel="stylesheet">
+    <title>78 FIT - Premium Detox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Syncopate:wght@400;700&family=Staatliches&family=Oswald:wght@300;600&display=swap" rel="stylesheet">
     
     <style>
         body {
-            /* GIF KEMBALI FULL COLOR */
             background-image: url('https://i.postimg.cc/Xq5zhmX4/giphy-(3).gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-color: #000;
-            background-blend-mode: normal; /* No more luminosity blend */
-            /* Font dasar diganti jadi tajam/modern */
             font-family: 'Oswald', sans-serif;
             color: #ffffff;
             margin: 0;
@@ -32,31 +29,26 @@
             display: flex;
             flex-direction: row;
             align-items: flex-start;
-            gap: 40px;
-            max-width: 1100px;
+            gap: 50px;
+            max-width: 1200px;
             width: 100%;
         }
 
         .container { width: 100%; max-width: 420px; position: relative; z-index: 10; }
 
-        /* --- H1: ANIMASI PUTIH BERSINAR LEWAT --- */
+        /* --- H1: PREMIUM 78 FIT (BUNGEE SHADE) --- */
         h1 {
-            font-family: 'Staatliches', sans-serif;
-            font-weight: 700;
-            font-size: 5rem;
+            font-family: 'Bungee Shade', cursive;
+            font-size: 5.5rem;
             color: #ffffff;
             text-align: center;
             margin: 0 0 10px 0;
-            letter-spacing: 5px;
             position: relative;
-            display: inline-block;
-            width: 100%;
-            /* Glow dasar putih */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-            overflow: hidden; /* Wajib buat animasi lewat */
+            /* Efek Kilat lewat */
+            overflow: hidden;
+            text-shadow: 0 0 20px rgba(255,255,255,0.4);
         }
 
-        /* Pseudo-element buat cahaya tajam lewat */
         h1::after {
             content: '';
             position: absolute;
@@ -64,128 +56,97 @@
             left: -150%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
-            transform: skewX(-30deg); 
-            animation: shineThrough 6s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: skewX(-20deg);
+            animation: shineThrough 5s infinite;
         }
 
-        /* Animasi cahaya lewat */
         @keyframes shineThrough {
             0% { left: -150%; }
             30% { left: 150%; }
             100% { left: 150%; }
         }
 
-        /* --- SETLIST SIDEBAR (BLACK & WHITE) --- */
+        /* --- SETLIST SIDEBAR (SYNCOPATE - ULTRA WIDE) --- */
         .setlist-sidebar {
             flex: 1;
             padding-top: 10px;
-            text-align: left;
-            min-width: 300px;
+            min-width: 350px;
         }
 
         .setlist-title {
-            font-family: 'Staatliches', sans-serif;
-            font-size: 1.5rem;
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
             color: #ffffff;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.7);
-            border-bottom: 2px solid #ffffff;
+            margin-bottom: 25px;
+            letter-spacing: 8px;
+            border-bottom: 3px solid #ffffff;
             padding-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
-
-        .song-list-scroll {
-            max-height: 80vh;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        /* Custom Scrollbar */
-        .song-list-scroll::-webkit-scrollbar { width: 5px; }
-        .song-list-scroll::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 10px; }
 
         .song-item {
-            font-family: 'Oswald', sans-serif; 
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #ffffff;
-            margin-bottom: 8px;
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #cccccc;
+            margin-bottom: 12px;
             opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.5s ease-out;
-            line-height: 1.3;
-            letter-spacing: 1px;
+            transform: translateX(20px);
+            transition: all 0.6s ease-out;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .song-item.show { opacity: 1; transform: translateX(0); }
-        .encore-label { color: #ff0000; font-size: 1.3rem; margin-top: 15px; font-family: 'Staatliches', sans-serif; letter-spacing: 2px;}
+        .song-item:hover { color: #fff; transform: scale(1.05); transition: 0.2s; }
 
-        /* --- CARD STYLE (Black Minimalist) --- */
+        .encore-label { 
+            color: #ff0000; 
+            font-weight: 700; 
+            margin-top: 20px; 
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+
+        /* --- CARDS & UI --- */
         .card {
-            backdrop-filter: blur(15px);
-            background: rgba(0, 0, 0, 0.85); 
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid #333;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-            transition: 0.3s;
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 4px; /* Sudut tajam lebih premium */
+            margin-top: 25px;
+            border: 1px solid #222;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
-        .card:hover { border-color: #ffffff; }
+        h3 { font-family: 'Staatliches', sans-serif; font-size: 1.8rem; letter-spacing: 4px; }
 
-        h3 { 
-            font-family: 'Staatliches', sans-serif;
-            font-size: 1.6rem; 
-            color: #ffffff; 
-            margin-top: 0; 
-            letter-spacing: 2px; 
-            text-shadow: 0 0 10px rgba(255,255,255,0.7);
-        }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .timer-box { background: rgba(255,255,255,0.03); border: 1px solid #222; padding: 15px 5px; }
+        .timer-box span { font-family: 'Staatliches', sans-serif; font-size: 2rem; }
 
-        /* --- TIMER --- */
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-        .timer-box { background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 5px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .timer-box span { 
-            font-family: 'Staatliches', sans-serif;
-            display: block; 
-            font-size: 24px; 
-            color: #ffffff; 
-            text-shadow: 0 0 10px rgba(255,255,255,0.7); 
-        }
-        .timer-box small { font-size: 9px; text-transform: uppercase; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
-
-        /* --- BUTTONS & INPUT --- */
         button {
             font-family: 'Staatliches', sans-serif;
-            width: 100%; padding: 12px; border-radius: 5px; border: none;
-            background: #ff0000; /* Red OOR Button */
-            color: white; font-size: 1.5rem; cursor: pointer; transition: 0.3s;
-            letter-spacing: 2px;
-            box-shadow: 0 5px 15px rgba(255,0,0,0.2);
+            width: 100%; padding: 15px; background: #fff; color: #000;
+            border: none; font-size: 1.5rem; cursor: pointer; transition: 0.3s;
+            letter-spacing: 3px; margin-top: 15px;
         }
-        button:hover { background: #ffffff; color: #000000; box-shadow: 0 5px 25px rgba(255,255,255,0.5); }
-        
+        button:hover { background: #ff0000; color: #fff; }
+
         input[type="number"] {
-            font-family: 'Staatliches', sans-serif;
-            width: 80%; padding: 8px; margin: 10px 0; border-radius: 5px;
-            background: rgba(0,0,0,0.7); color: #2ecc71; text-align: center; font-size: 2.2rem; border: 1px solid #333;
+            width: 100%; background: transparent; border: none; border-bottom: 2px solid #333;
+            color: #fff; font-size: 3rem; text-align: center; font-family: 'Staatliches', sans-serif;
         }
-        input[type="number"]:focus { border-color: #ffffff; outline: none; }
 
-        /* --- CHECKLIST --- */
-        .checklist { text-align: left; }
-        .item { font-family: 'Oswald', sans-serif; font-weight: 600; display: flex; align-items: center; margin-bottom: 8px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; accent-color: #ff0000; }
+        .item { font-family: 'Oswald', sans-serif; font-weight: 300; display: flex; align-items: center; margin-bottom: 12px; font-size: 1.1rem; letter-spacing: 2px; }
+        input[type="checkbox"] { width: 18px; height: 18px; margin-right: 15px; accent-color: #ff0000; }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .main-wrapper { flex-direction: column; align-items: center; }
-            .setlist-sidebar { padding-top: 30px; text-align: center; width: 100%; }
-            .song-list-scroll { max-height: none; overflow: visible; }
-            h1 { font-size: 3.5rem; }
+            .setlist-sidebar { min-width: 100%; border-top: 1px solid #222; padding-top: 40px; }
+            h1 { font-size: 4rem; }
         }
     </style>
 </head>
@@ -198,24 +159,24 @@
             <h1>78 FIT</h1>
             
             <div class="card">
-                <h3>DETOX TOUR JAKARTA</h3>
+                <h3>STADIUM COUNTDOWN</h3>
                 <div class="timer-grid">
-                    <div class="timer-box"><span id="days">00</span><small>Days</small></div>
-                    <div class="timer-box"><span id="hours">00</span><small>Hours</small></div>
-                    <div class="timer-box"><span id="minutes">00</span><small>Min</small></div>
-                    <div class="timer-box"><span id="seconds">00</span><small>Sec</small></div>
+                    <div class="timer-box"><span id="days">00</span><small>DAYS</small></div>
+                    <div class="timer-box"><span id="hours">00</span><small>HRS</small></div>
+                    <div class="timer-box"><span id="minutes">00</span><small>MIN</small></div>
+                    <div class="timer-box"><span id="seconds">00</span><small>SEC</small></div>
                 </div>
             </div>
 
             <div class="card">
-                <h3>TARGET: 78.0 KG</h3>
-                <div id="lastWeight" style="color:#ffffff; font-size:3.5rem; font-family: 'Staatliches', sans-serif; text-shadow: 0 0 15px rgba(255,255,255,0.7); margin-bottom: 5px;">--</div>
-                <input type="number" id="currentWeight" step="0.1" placeholder="ENTER WEIGHT">
-                <button onclick="updateWeight()">SAVE PROGRESS</button>
+                <h3>CURRENT WEIGHT</h3>
+                <div id="lastWeight" style="font-size: 4rem; font-family: 'Staatliches', sans-serif;">--</div>
+                <input type="number" id="currentWeight" step="0.1" placeholder="00.0">
+                <button onclick="updateWeight()">LOG SESSION</button>
             </div>
 
             <div class="card checklist">
-                <h3 style="text-align: center;">DAILY MISSION</h3>
+                <h3 style="text-align:center">DAILY PROTOCOL</h3>
                 <div class="item"><input type="checkbox"> PUSH UP 50X</div>
                 <div class="item"><input type="checkbox"> WEIGHT LIFTING</div>
                 <div class="item"><input type="checkbox"> CARDIO BATTLE</div>
@@ -224,8 +185,8 @@
         </div>
 
         <div class="setlist-sidebar">
-            <div class="setlist-title">DETOX TOUR ASIA 2026 SETLIST:</div>
-            <div class="song-list-scroll" id="setlist-content"></div>
+            <div class="setlist-title">DETOX ASIA TOUR 2026</div>
+            <div id="setlist-content"></div>
         </div>
     </div>
 
@@ -233,18 +194,14 @@
         const song = document.getElementById('themeSong');
         document.body.addEventListener('click', () => { if (song.paused) song.play(); }, { once: true });
 
-        // TRUE SETLIST
         const setlist = [
-            "1. Puppets Can’t Control You (JP)", "2. The Beginning", "3. Save Yourself (JP)",
-            "4. NASTY", "5. Renegades (JP)", "6. Party’s Over",
-            "7. Tiny Pieces", "8. Wherever You Are", "9. Make It Out Alive",
-            "10. Instrumental Solo", "11. C.U.R.I.O.S.I.T.Y.", "12. Dystopia (JP)",
-            "13. Delusion:All", "14. Stand Out Fit In (JP)", "15. Kimishidai Ressha",
-            "16. Tropical Therapy", "17. The Pilot </3", 
-            "--- ENCORE ---",
-            "18. +Matter", "19. We Are (JP)",
-            "--- ENCORE 2 ---",
-            "20. Kanzen Kankaku Dreamer"
+            "Puppets Can’t Control You (JP)", "The Beginning", "Save Yourself (JP)",
+            "NASTY", "Renegades (JP)", "Party’s Over", "Tiny Pieces",
+            "Wherever You Are", "Make It Out Alive", "Instrumental",
+            "C.U.R.I.O.S.I.T.Y.", "Dystopia (JP)", "Delusion:All",
+            "Stand Out Fit In (JP)", "Kimishidai Ressha", "Tropical Therapy",
+            "The Pilot </3", "ENCORE: +Matter", "We Are (JP)",
+            "ENCORE 2: Kanzen Kankaku Dreamer"
         ];
 
         function initSetlist() {
@@ -253,9 +210,9 @@
                 const div = document.createElement('div');
                 div.className = 'song-item';
                 if(track.includes("ENCORE")) div.classList.add('encore-label');
-                div.innerText = "> " + track; // Pake '>' ala CLI/industrial
+                div.innerText = track;
                 container.appendChild(div);
-                setTimeout(() => { div.classList.add('show'); }, 500 + (index * 600)); 
+                setTimeout(() => { div.classList.add('show'); }, 500 + (index * 450)); 
             });
         }
 
