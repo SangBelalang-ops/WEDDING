@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>78 FIT - Black Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Special+Elite&family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+    <title>78 FIT - OOR Minimalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Oswald:wght@300;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
+            /* GIF KEMBALI FULL COLOR */
             background-image: url('https://i.postimg.cc/Xq5zhmX4/giphy-(3).gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-color: #000;
-            background-blend-mode: luminosity; /* Bikin background jadi hitam putih */
+            background-blend-mode: normal; /* No more luminosity blend */
+            /* Font dasar diganti jadi tajam/modern */
             font-family: 'Oswald', sans-serif;
-            color: #fff;
+            color: #ffffff;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            cursor: crosshair;
+            cursor: pointer;
             overflow-x: hidden;
         }
 
@@ -30,25 +32,31 @@
             display: flex;
             flex-direction: row;
             align-items: flex-start;
-            gap: 50px;
+            gap: 40px;
             max-width: 1100px;
             width: 100%;
         }
 
         .container { width: 100%; max-width: 420px; position: relative; z-index: 10; }
 
-        /* --- H1: GOTHIC WHITE SHINE --- */
+        /* --- H1: ANIMASI PUTIH BERSINAR LEWAT --- */
         h1 {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 6rem;
-            color: #fff;
+            font-family: 'Staatliches', sans-serif;
+            font-weight: 700;
+            font-size: 5rem;
+            color: #ffffff;
             text-align: center;
-            margin: 0;
+            margin: 0 0 10px 0;
+            letter-spacing: 5px;
             position: relative;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+            /* Glow dasar putih */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            overflow: hidden; /* Wajib buat animasi lewat */
         }
 
+        /* Pseudo-element buat cahaya tajam lewat */
         h1::after {
             content: '';
             position: absolute;
@@ -56,98 +64,128 @@
             left: -150%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            animation: shine 5s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+            transform: skewX(-30deg); 
+            animation: shineThrough 6s infinite;
         }
 
-        @keyframes shine {
+        /* Animasi cahaya lewat */
+        @keyframes shineThrough {
             0% { left: -150%; }
-            20% { left: 150%; }
+            30% { left: 150%; }
             100% { left: 150%; }
         }
 
-        /* --- SETLIST: TYPEWRITER STYLE --- */
+        /* --- SETLIST SIDEBAR (BLACK & WHITE) --- */
         .setlist-sidebar {
             flex: 1;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 320px;
+            padding-top: 10px;
+            text-align: left;
+            min-width: 300px;
         }
 
         .setlist-title {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 1.8rem;
-            color: #fff;
-            margin-bottom: 20px;
-            border-bottom: 1px double #fff;
+            font-family: 'Staatliches', sans-serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.7);
+            border-bottom: 2px solid #ffffff;
             padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
+
+        .song-list-scroll {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        /* Custom Scrollbar */
+        .song-list-scroll::-webkit-scrollbar { width: 5px; }
+        .song-list-scroll::-webkit-scrollbar-thumb { background: #ffffff; border-radius: 10px; }
 
         .song-item {
-            font-family: 'Special Elite', cursive;
+            font-family: 'Oswald', sans-serif; 
+            font-weight: 600;
             font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 10px;
+            color: #ffffff;
+            margin-bottom: 8px;
             opacity: 0;
-            transform: translateY(10px);
-            transition: 0.5s;
+            transform: translateX(30px);
+            transition: all 0.5s ease-out;
+            line-height: 1.3;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .song-item.show { opacity: 1; transform: translateY(0); }
-        .song-item:hover { color: #fff; text-shadow: 0 0 10px #fff; }
+        .song-item.show { opacity: 1; transform: translateX(0); }
+        .encore-label { color: #ff0000; font-size: 1.3rem; margin-top: 15px; font-family: 'Staatliches', sans-serif; letter-spacing: 2px;}
 
-        /* --- CARDS: MINIMALIST --- */
+        /* --- CARD STYLE (Black Minimalist) --- */
         .card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #444;
-            padding: 25px;
-            margin-top: 25px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.85); 
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #333;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.9);
             transition: 0.3s;
         }
 
-        .card:hover { border-color: #fff; }
+        .card:hover { border-color: #ffffff; }
 
         h3 { 
-            font-family: 'Oswald', sans-serif;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-family: 'Staatliches', sans-serif;
+            font-size: 1.6rem; 
+            color: #ffffff; 
+            margin-top: 0; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 10px rgba(255,255,255,0.7);
         }
 
         /* --- TIMER --- */
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .timer-box { border-bottom: 1px solid #444; padding: 10px 0; }
-        .timer-box span { font-size: 1.8rem; font-weight: bold; }
-        .timer-box small { font-size: 0.6rem; opacity: 0.5; letter-spacing: 2px; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .timer-box { background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 5px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .timer-box span { 
+            font-family: 'Staatliches', sans-serif;
+            display: block; 
+            font-size: 24px; 
+            color: #ffffff; 
+            text-shadow: 0 0 10px rgba(255,255,255,0.7); 
+        }
+        .timer-box small { font-size: 9px; text-transform: uppercase; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
 
         /* --- BUTTONS & INPUT --- */
         button {
-            font-family: 'Oswald', sans-serif;
-            width: 100%; padding: 15px; background: #fff; color: #000;
-            border: none; cursor: pointer; font-weight: bold; letter-spacing: 3px;
-            margin-top: 15px; transition: 0.3s;
+            font-family: 'Staatliches', sans-serif;
+            width: 100%; padding: 12px; border-radius: 5px; border: none;
+            background: #ff0000; /* Red OOR Button */
+            color: white; font-size: 1.5rem; cursor: pointer; transition: 0.3s;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(255,0,0,0.2);
         }
-        button:hover { background: #888; color: #fff; }
+        button:hover { background: #ffffff; color: #000000; box-shadow: 0 5px 25px rgba(255,255,255,0.5); }
         
         input[type="number"] {
-            width: 90%; background: transparent; border: none; border-bottom: 1px solid #444;
-            color: #fff; font-size: 2.5rem; text-align: center; font-family: 'Oswald', sans-serif;
-            margin: 10px 0;
+            font-family: 'Staatliches', sans-serif;
+            width: 80%; padding: 8px; margin: 10px 0; border-radius: 5px;
+            background: rgba(0,0,0,0.7); color: #2ecc71; text-align: center; font-size: 2.2rem; border: 1px solid #333;
         }
-        input[type="number"]:focus { outline: none; border-bottom-color: #fff; }
+        input[type="number"]:focus { border-color: #ffffff; outline: none; }
 
+        /* --- CHECKLIST --- */
         .checklist { text-align: left; }
-        .item { display: flex; align-items: center; margin-bottom: 12px; font-size: 1.1rem; letter-spacing: 1px; }
-        input[type="checkbox"] { filter: grayscale(1); margin-right: 15px; width: 18px; height: 18px; }
+        .item { font-family: 'Oswald', sans-serif; font-weight: 600; display: flex; align-items: center; margin-bottom: 8px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; accent-color: #ff0000; }
 
         @media (max-width: 850px) {
             .main-wrapper { flex-direction: column; align-items: center; }
-            .setlist-sidebar { border-left: none; border-top: 1px solid #444; width: 100%; }
-            h1 { font-size: 4rem; }
+            .setlist-sidebar { padding-top: 30px; text-align: center; width: 100%; }
+            .song-list-scroll { max-height: none; overflow: visible; }
+            h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -160,24 +198,24 @@
             <h1>78 FIT</h1>
             
             <div class="card">
-                <h3>TIME TO STADIUM</h3>
+                <h3>DETOX TOUR JAKARTA</h3>
                 <div class="timer-grid">
-                    <div class="timer-box"><span id="days">00</span><small>DAYS</small></div>
-                    <div class="timer-box"><span id="hours">00</span><small>HOURS</small></div>
-                    <div class="timer-box"><span id="minutes">00</span><small>MINS</small></div>
-                    <div class="timer-box"><span id="seconds">00</span><small>SECS</small></div>
+                    <div class="timer-box"><span id="days">00</span><small>Days</small></div>
+                    <div class="timer-box"><span id="hours">00</span><small>Hours</small></div>
+                    <div class="timer-box"><span id="minutes">00</span><small>Min</small></div>
+                    <div class="timer-box"><span id="seconds">00</span><small>Sec</small></div>
                 </div>
             </div>
 
             <div class="card">
                 <h3>TARGET: 78.0 KG</h3>
-                <div id="lastWeight" style="font-size: 3.5rem; letter-spacing: -2px;">--</div>
-                <input type="number" id="currentWeight" step="0.1" placeholder="00.0">
-                <button onclick="updateWeight()">UPDATE BATTLE</button>
+                <div id="lastWeight" style="color:#ffffff; font-size:3.5rem; font-family: 'Staatliches', sans-serif; text-shadow: 0 0 15px rgba(255,255,255,0.7); margin-bottom: 5px;">--</div>
+                <input type="number" id="currentWeight" step="0.1" placeholder="ENTER WEIGHT">
+                <button onclick="updateWeight()">SAVE PROGRESS</button>
             </div>
 
             <div class="card checklist">
-                <h3>DAILY DRILL</h3>
+                <h3 style="text-align: center;">DAILY MISSION</h3>
                 <div class="item"><input type="checkbox"> PUSH UP 50X</div>
                 <div class="item"><input type="checkbox"> WEIGHT LIFTING</div>
                 <div class="item"><input type="checkbox"> CARDIO BATTLE</div>
@@ -186,8 +224,8 @@
         </div>
 
         <div class="setlist-sidebar">
-            <div class="setlist-title">DETOX TOUR ASIA 2026</div>
-            <div id="setlist-content"></div>
+            <div class="setlist-title">DETOX TOUR ASIA 2026 SETLIST:</div>
+            <div class="song-list-scroll" id="setlist-content"></div>
         </div>
     </div>
 
@@ -195,14 +233,18 @@
         const song = document.getElementById('themeSong');
         document.body.addEventListener('click', () => { if (song.paused) song.play(); }, { once: true });
 
+        // TRUE SETLIST
         const setlist = [
-            "Puppets Can’t Control You (JP)", "The Beginning", "Save Yourself (JP)",
-            "NASTY", "Renegades (JP)", "Party’s Over", "Tiny Pieces",
-            "Wherever You Are", "Make It Out Alive", "Instrumental",
-            "C.U.R.I.O.S.I.T.Y.", "Dystopia (JP)", "Delusion:All",
-            "Stand Out Fit In (JP)", "Kimishidai Ressha", "Tropical Therapy",
-            "The Pilot </3", "ENCORE: +Matter", "We Are (JP)",
-            "ENCORE 2: Kanzen Kankaku Dreamer"
+            "1. Puppets Can’t Control You (JP)", "2. The Beginning", "3. Save Yourself (JP)",
+            "4. NASTY", "5. Renegades (JP)", "6. Party’s Over",
+            "7. Tiny Pieces", "8. Wherever You Are", "9. Make It Out Alive",
+            "10. Instrumental Solo", "11. C.U.R.I.O.S.I.T.Y.", "12. Dystopia (JP)",
+            "13. Delusion:All", "14. Stand Out Fit In (JP)", "15. Kimishidai Ressha",
+            "16. Tropical Therapy", "17. The Pilot </3", 
+            "--- ENCORE ---",
+            "18. +Matter", "19. We Are (JP)",
+            "--- ENCORE 2 ---",
+            "20. Kanzen Kankaku Dreamer"
         ];
 
         function initSetlist() {
@@ -210,9 +252,10 @@
             setlist.forEach((track, index) => {
                 const div = document.createElement('div');
                 div.className = 'song-item';
-                div.innerText = "> " + track;
+                if(track.includes("ENCORE")) div.classList.add('encore-label');
+                div.innerText = "> " + track; // Pake '>' ala CLI/industrial
                 container.appendChild(div);
-                setTimeout(() => { div.classList.add('show'); }, 100 + (index * 400)); 
+                setTimeout(() => { div.classList.add('show'); }, 500 + (index * 600)); 
             });
         }
 
