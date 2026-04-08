@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>78 FIT - OOR Solid</title>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>78 FIT - Dynamic Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Oswald:wght@500;700&family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -36,35 +36,45 @@
 
         .container { width: 100%; max-width: 420px; position: relative; z-index: 10; }
 
-        /* --- H1: SOLID WHITE SHINE --- */
+        /* --- H1: TWO-TONE 78 FIT --- */
         h1 {
             font-family: 'Staatliches', sans-serif;
-            font-size: 6rem;
-            color: #ffffff;
+            font-size: 6.5rem;
             text-align: center;
             margin: 0;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .num-78 {
+            color: #ffffff;
             position: relative;
-            display: block;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
             overflow: hidden;
         }
 
-        h1::after {
+        /* Animasi cahaya cuma di angka 78 */
+        .num-78::after {
             content: '';
             position: absolute;
             top: 0;
             left: -150%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
             transform: skewX(-25deg);
-            animation: shineThrough 5s infinite;
+            animation: shineThrough 4s infinite;
+        }
+
+        .text-fit {
+            color: #ff0000; /* Merah OOR */
+            text-shadow: 2px 2px 0px #000;
         }
 
         @keyframes shineThrough {
             0% { left: -150%; }
-            25% { left: 150%; }
+            20% { left: 150%; }
             100% { left: 150%; }
         }
 
@@ -80,69 +90,83 @@
             font-size: 1.5rem;
             color: #ffffff;
             margin-bottom: 20px;
-            letter-spacing: 3px;
-            border-bottom: 2px solid #ffffff;
-            padding-bottom: 10px;
+            border-left: 5px solid #ff0000;
+            padding-left: 15px;
+            letter-spacing: 2px;
         }
 
         .song-item {
             font-family: 'Oswald', sans-serif;
             font-weight: 500;
             font-size: 1.1rem;
-            color: #ffffff;
+            color: #bbbbbb;
             margin-bottom: 8px;
             opacity: 0;
             transform: translateX(20px);
-            transition: all 0.5s ease-out;
+            transition: 0.5s;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .song-item.show { opacity: 1; transform: translateX(0); }
-        .encore-label { color: #ff0000; margin-top: 15px; border-top: 1px solid #333; padding-top: 5px; }
+        .song-item:hover { color: #ffffff; padding-left: 5px; }
+        .encore-label { color: #ff0000; border-top: 1px solid #333; padding-top: 10px; margin-top: 15px; font-weight: 700; }
 
-        /* --- CARDS: CLEAN & BOLD --- */
+        /* --- CARDS --- */
         .card {
             backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             padding: 20px;
-            border-radius: 0; /* Tajam lebih macho */
-            margin-top: 20px;
-            border-left: 4px solid #ffffff; /* Aksen garis samping biar tegas */
-            text-align: center;
+            margin-top: 25px;
+            border: 1px solid #222;
+            border-top: 3px solid #ff0000; /* Aksen merah atas */
         }
 
-        h3 { font-family: 'Staatliches', sans-serif; font-size: 1.5rem; letter-spacing: 2px; margin: 0 0 15px 0; }
+        h3 { font-family: 'Staatliches', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 15px; }
 
-        /* --- TIMER CLEAN VERSION --- */
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
-        .timer-box { padding: 5px; }
-        .timer-box span { font-family: 'Staatliches', sans-serif; font-size: 2.2rem; line-height: 1; }
-        .timer-box small { display: block; font-size: 0.7rem; opacity: 0.6; }
+        /* --- COUNTDOWN: FONT & WARNA BEDA --- */
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .timer-box { text-align: center; }
+        
+        .timer-box span { 
+            font-family: 'Chakra Petch', sans-serif; /* Font digital industrial */
+            font-size: 2.5rem; 
+            display: block;
+            color: #ff0000; /* Angka warna merah */
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+            line-height: 1;
+        }
+        
+        .timer-box small { 
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem; 
+            color: #ffffff; /* Label warna putih */
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
 
         /* --- BUTTONS & INPUT --- */
         button {
             font-family: 'Staatliches', sans-serif;
-            width: 100%; padding: 12px; background: #ffffff; color: #000;
-            border: none; font-size: 1.4rem; cursor: pointer; transition: 0.2s;
+            width: 100%; padding: 12px; background: #ff0000; color: #fff;
+            border: none; font-size: 1.5rem; cursor: pointer; transition: 0.2s;
             letter-spacing: 2px;
         }
-        button:hover { background: #ff0000; color: #fff; }
+        button:hover { background: #ffffff; color: #000; }
 
         input[type="number"] {
-            width: 80%; background: transparent; border: none; border-bottom: 2px solid #333;
-            color: #ffffff; font-size: 2.5rem; text-align: center; font-family: 'Staatliches', sans-serif;
+            width: 80%; background: transparent; border: none; border-bottom: 2px solid #ff0000;
+            color: #ffffff; font-size: 2.8rem; text-align: center; font-family: 'Chakra Petch', sans-serif;
             margin-bottom: 10px;
         }
         input[type="number"]:focus { outline: none; border-bottom-color: #fff; }
 
-        .item { display: flex; align-items: center; margin-bottom: 10px; font-size: 1.1rem; text-transform: uppercase; }
+        .item { display: flex; align-items: center; margin-bottom: 10px; font-size: 1.1rem; text-transform: uppercase; font-weight: 500; }
         input[type="checkbox"] { width: 18px; height: 18px; margin-right: 15px; accent-color: #ff0000; }
 
         @media (max-width: 850px) {
             .main-wrapper { flex-direction: column; align-items: center; }
             .setlist-sidebar { width: 100%; border-top: 1px solid #333; padding-top: 30px; }
-            h1 { font-size: 4rem; }
+            h1 { font-size: 4.5rem; }
         }
     </style>
 </head>
@@ -152,10 +176,10 @@
 
     <div class="main-wrapper">
         <div class="container">
-            <h1>78 FIT</h1>
+            <h1><span class="num-78">78</span><span class="text-fit">FIT</span></h1>
             
             <div class="card">
-                <h3>ROAD TO JAKARTA</h3>
+                <h3>DETOX TOUR COUNTDOWN</h3>
                 <div class="timer-grid">
                     <div class="timer-box"><span id="days">00</span><small>DAYS</small></div>
                     <div class="timer-box"><span id="hours">00</span><small>HOURS</small></div>
@@ -165,14 +189,14 @@
             </div>
 
             <div class="card">
-                <h3>BODY WEIGHT</h3>
-                <div id="lastWeight" style="font-size: 3.5rem; font-family: 'Staatliches', sans-serif; color: #2ecc71;">--</div>
+                <h3>TARGET: 78.0 KG</h3>
+                <div id="lastWeight" style="font-size: 4rem; font-family: 'Chakra Petch', sans-serif; color: #ffffff; text-shadow: 0 0 15px rgba(255,255,255,0.3);">--</div>
                 <input type="number" id="currentWeight" step="0.1" placeholder="00.0">
-                <button onclick="updateWeight()">SAVE BATTLE</button>
+                <button onclick="updateWeight()">SAVE BATTLE PROGRESS</button>
             </div>
 
             <div class="card checklist">
-                <h3 style="text-align: center;">DAILY MISSION</h3>
+                <h3 style="text-align: center;">DAILY MISSIONS</h3>
                 <div class="item"><input type="checkbox"> PUSH UP 50X</div>
                 <div class="item"><input type="checkbox"> WEIGHT LIFTING</div>
                 <div class="item"><input type="checkbox"> CARDIO BATTLE</div>
